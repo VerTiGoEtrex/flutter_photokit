@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package flutter_photokit;
+
+service PhotoKit {
+    rpc getAuthorizationStatus(GetAuthorizationStatusRequest) returns (GetAuthorizationStatusResponse) {}
+}
+
+message GetAuthorizationStatusRequest {
+}
+
+enum AuthorizationStatus {
+    NOT_DETERMINED = 0;
+    RESTRICTED = 1;
+    DENIED = 2;
+    AUTHORIZED = 3;
+}
+
+message GetAuthorizationStatusResponse {
+    AuthorizationStatus status = 1;
+}
