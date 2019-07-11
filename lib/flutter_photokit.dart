@@ -15,6 +15,12 @@ class FlutterPhotokit {
         await api.getAuthorizationStatus(_ctx, GetAuthorizationStatusRequest());
     return response.status;
   }
+
+  Future<AuthorizationStatus> requestAuth() async {
+    final response = await api.requestAuthorization(
+        _ctx, RequestAuthorizationStatusRequest());
+    return response.status;
+  }
 }
 
 class MethodChannelRpcClient extends RpcClient {

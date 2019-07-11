@@ -50,7 +50,20 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('Running on: $_platformVersion\n'),
+              RaisedButton(
+                child: Text("request auth"),
+                onPressed: () async {
+                  plugin
+                      .requestAuth()
+                      .then((data) => setState(() => _platformVersion = data));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

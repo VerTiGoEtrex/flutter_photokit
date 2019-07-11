@@ -26,15 +26,29 @@ const GetAuthorizationStatusResponse$json = const {
   ],
 };
 
+const RequestAuthorizationStatusRequest$json = const {
+  '1': 'RequestAuthorizationStatusRequest',
+};
+
+const RequestAuthorizationStatusResponse$json = const {
+  '1': 'RequestAuthorizationStatusResponse',
+  '2': const [
+    const {'1': 'status', '3': 1, '4': 1, '5': 14, '6': '.flutter_photokit.AuthorizationStatus', '10': 'status'},
+  ],
+};
+
 const PhotoKitServiceBase$json = const {
   '1': 'PhotoKit',
   '2': const [
     const {'1': 'getAuthorizationStatus', '2': '.flutter_photokit.GetAuthorizationStatusRequest', '3': '.flutter_photokit.GetAuthorizationStatusResponse', '4': const {}},
+    const {'1': 'requestAuthorization', '2': '.flutter_photokit.RequestAuthorizationStatusRequest', '3': '.flutter_photokit.RequestAuthorizationStatusResponse', '4': const {}},
   ],
 };
 
 const PhotoKitServiceBase$messageJson = const {
   '.flutter_photokit.GetAuthorizationStatusRequest': GetAuthorizationStatusRequest$json,
   '.flutter_photokit.GetAuthorizationStatusResponse': GetAuthorizationStatusResponse$json,
+  '.flutter_photokit.RequestAuthorizationStatusRequest': RequestAuthorizationStatusRequest$json,
+  '.flutter_photokit.RequestAuthorizationStatusResponse': RequestAuthorizationStatusResponse$json,
 };
 

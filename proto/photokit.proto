@@ -4,9 +4,21 @@ package flutter_photokit;
 
 service PhotoKit {
     rpc getAuthorizationStatus(GetAuthorizationStatusRequest) returns (GetAuthorizationStatusResponse) {}
+    rpc requestAuthorization(RequestAuthorizationStatusRequest) returns (RequestAuthorizationStatusResponse) {}
 }
 
 message GetAuthorizationStatusRequest {
+}
+
+message GetAuthorizationStatusResponse {
+    AuthorizationStatus status = 1;
+}
+
+message RequestAuthorizationStatusRequest {
+}
+
+message RequestAuthorizationStatusResponse {
+    AuthorizationStatus status = 1;
 }
 
 enum AuthorizationStatus {
@@ -14,8 +26,4 @@ enum AuthorizationStatus {
     RESTRICTED = 1;
     DENIED = 2;
     AUTHORIZED = 3;
-}
-
-message GetAuthorizationStatusResponse {
-    AuthorizationStatus status = 1;
 }

@@ -17,10 +17,12 @@ export 'photokit.pb.dart';
 
 abstract class PhotoKitServiceBase extends $pb.GeneratedService {
   $async.Future<$0.GetAuthorizationStatusResponse> getAuthorizationStatus($pb.ServerContext ctx, $0.GetAuthorizationStatusRequest request);
+  $async.Future<$0.RequestAuthorizationStatusResponse> requestAuthorization($pb.ServerContext ctx, $0.RequestAuthorizationStatusRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
       case 'getAuthorizationStatus': return $0.GetAuthorizationStatusRequest();
+      case 'requestAuthorization': return $0.RequestAuthorizationStatusRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -28,6 +30,7 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
       case 'getAuthorizationStatus': return this.getAuthorizationStatus(ctx, request);
+      case 'requestAuthorization': return this.requestAuthorization(ctx, request);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
