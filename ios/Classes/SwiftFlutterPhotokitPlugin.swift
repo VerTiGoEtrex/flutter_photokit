@@ -16,16 +16,16 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
         var response:Promise<Message>
         do {
             switch call.method {
-            case "getAuthorizationStatus":
+            case "GetAuthorizationStatus":
                 response = try execGeneric(requestData: argData, funct: self.getAuthorizationStatus)
                 break
-            case "requestAuthorization":
+            case "RequestAuthorization":
                 response = try execGeneric(requestData: argData, funct: self.requestAuthorization)
                 break
-            case "fetchTopLevelUserCollections":
+            case "FetchTopLevelUserCollections":
                 response = try execGeneric(requestData: argData, funct: self.fetchTopLevelUserCollections)
                 break
-            case "trigger":
+            case "Trigger":
                 response = try execGeneric(requestData: argData, funct: self.trigger)
                 break
             default:
