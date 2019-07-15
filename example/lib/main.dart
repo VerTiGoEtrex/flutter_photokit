@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     try {
       status = await plugin.authorizationStatus;
     } on PlatformException {
-      status = AuthorizationStatus.RESTRICTED;
+      status = AuthorizationStatus.AUTHORIZATION_STATUS_RESTRICTED;
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -56,10 +56,19 @@ class _MyAppState extends State<MyApp> {
               Text('Running on: $_platformVersion\n'),
               RaisedButton(
                 child: Text("request auth"),
+                onPressed: () async => plugin
+                    .requestAuth()
+                    .then((data) => setState(() => _platformVersion = data)),
+              ),
+              RaisedButton(
+                child: Text("trigger"),
+                onPressed: () async => plugin.trigger(),
+              ),
+              RaisedButton(
+                child: Text("fetchAll"),
                 onPressed: () async {
-                  plugin
-                      .requestAuth()
-                      .then((data) => setState(() => _platformVersion = data));
+                  final res = await plugin.fetchTopLevelUserCollections();
+                  print(res);
                 },
               ),
             ],

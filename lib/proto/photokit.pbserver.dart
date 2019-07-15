@@ -10,27 +10,33 @@ import 'dart:async' as $async;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'dart:core' as $core show String, Map, ArgumentError, dynamic;
-import 'photokit.pb.dart' as $0;
+import 'photokit.pb.dart' as $2;
 import 'photokit.pbjson.dart';
 
 export 'photokit.pb.dart';
 
 abstract class PhotoKitServiceBase extends $pb.GeneratedService {
-  $async.Future<$0.GetAuthorizationStatusResponse> getAuthorizationStatus($pb.ServerContext ctx, $0.GetAuthorizationStatusRequest request);
-  $async.Future<$0.RequestAuthorizationStatusResponse> requestAuthorization($pb.ServerContext ctx, $0.RequestAuthorizationStatusRequest request);
+  $async.Future<$2.TriggerResponse> trigger($pb.ServerContext ctx, $2.TriggerRequest request);
+  $async.Future<$2.GetAuthorizationStatusResponse> getAuthorizationStatus($pb.ServerContext ctx, $2.GetAuthorizationStatusRequest request);
+  $async.Future<$2.RequestAuthorizationResponse> requestAuthorization($pb.ServerContext ctx, $2.RequestAuthorizationRequest request);
+  $async.Future<$2.FetchTopLevelUserCollectionsResponse> fetchTopLevelUserCollections($pb.ServerContext ctx, $2.FetchTopLevelUserCollectionsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'getAuthorizationStatus': return $0.GetAuthorizationStatusRequest();
-      case 'requestAuthorization': return $0.RequestAuthorizationStatusRequest();
+      case 'Trigger': return $2.TriggerRequest();
+      case 'GetAuthorizationStatus': return $2.GetAuthorizationStatusRequest();
+      case 'RequestAuthorization': return $2.RequestAuthorizationRequest();
+      case 'FetchTopLevelUserCollections': return $2.FetchTopLevelUserCollectionsRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'getAuthorizationStatus': return this.getAuthorizationStatus(ctx, request);
-      case 'requestAuthorization': return this.requestAuthorization(ctx, request);
+      case 'Trigger': return this.trigger(ctx, request);
+      case 'GetAuthorizationStatus': return this.getAuthorizationStatus(ctx, request);
+      case 'RequestAuthorization': return this.requestAuthorization(ctx, request);
+      case 'FetchTopLevelUserCollections': return this.fetchTopLevelUserCollections(ctx, request);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

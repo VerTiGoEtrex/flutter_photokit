@@ -19,34 +19,38 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
+/// Photokit Types
 enum FlutterPhotokit_AuthorizationStatus: SwiftProtobuf.Enum {
   typealias RawValue = Int
-  case notDetermined // = 0
-  case restricted // = 1
-  case denied // = 2
-  case authorized // = 3
+  case invalid // = 0
+  case notDetermined // = 1
+  case restricted // = 2
+  case denied // = 3
+  case authorized // = 4
   case UNRECOGNIZED(Int)
 
   init() {
-    self = .notDetermined
+    self = .invalid
   }
 
   init?(rawValue: Int) {
     switch rawValue {
-    case 0: self = .notDetermined
-    case 1: self = .restricted
-    case 2: self = .denied
-    case 3: self = .authorized
+    case 0: self = .invalid
+    case 1: self = .notDetermined
+    case 2: self = .restricted
+    case 3: self = .denied
+    case 4: self = .authorized
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
 
   var rawValue: Int {
     switch self {
-    case .notDetermined: return 0
-    case .restricted: return 1
-    case .denied: return 2
-    case .authorized: return 3
+    case .invalid: return 0
+    case .notDetermined: return 1
+    case .restricted: return 2
+    case .denied: return 3
+    case .authorized: return 4
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -58,6 +62,7 @@ enum FlutterPhotokit_AuthorizationStatus: SwiftProtobuf.Enum {
 extension FlutterPhotokit_AuthorizationStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
   static var allCases: [FlutterPhotokit_AuthorizationStatus] = [
+    .invalid,
     .notDetermined,
     .restricted,
     .denied,
@@ -66,6 +71,422 @@ extension FlutterPhotokit_AuthorizationStatus: CaseIterable {
 }
 
 #endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHCollectionListType: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case momentList // = 1
+  case folder // = 2
+  case smartFolder // = 3
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .momentList
+    case 2: self = .folder
+    case 3: self = .smartFolder
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .momentList: return 1
+    case .folder: return 2
+    case .smartFolder: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHCollectionListType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHCollectionListType] = [
+    .invalid,
+    .momentList,
+    .folder,
+    .smartFolder,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHCollectionListSubtype: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case momentListCluster // = 1
+  case momentListYear // = 2
+  case regularFolder // = 3
+  case smartFolderEvents // = 4
+  case smartFolderFaces // = 5
+  case any // = 6
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .momentListCluster
+    case 2: self = .momentListYear
+    case 3: self = .regularFolder
+    case 4: self = .smartFolderEvents
+    case 5: self = .smartFolderFaces
+    case 6: self = .any
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .momentListCluster: return 1
+    case .momentListYear: return 2
+    case .regularFolder: return 3
+    case .smartFolderEvents: return 4
+    case .smartFolderFaces: return 5
+    case .any: return 6
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHCollectionListSubtype: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHCollectionListSubtype] = [
+    .invalid,
+    .momentListCluster,
+    .momentListYear,
+    .regularFolder,
+    .smartFolderEvents,
+    .smartFolderFaces,
+    .any,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHAssetCollectionType: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case album // = 1
+  case smartAlbum // = 2
+  case moment // = 3
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .album
+    case 2: self = .smartAlbum
+    case 3: self = .moment
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .album: return 1
+    case .smartAlbum: return 2
+    case .moment: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHAssetCollectionType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHAssetCollectionType] = [
+    .invalid,
+    .album,
+    .smartAlbum,
+    .moment,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHAssetCollectionSubtype: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case albumRegular // = 1
+  case albumSyncedEvent // = 2
+  case albumSyncedFaces // = 3
+  case albumSyncedAlbum // = 4
+  case albumImported // = 5
+  case albumMyPhotoStream // = 6
+  case albumCloudShared // = 7
+  case smartAlbumGeneric // = 8
+  case smartAlbumPanoramas // = 9
+  case smartAlbumVideos // = 10
+  case smartAlbumFavorites // = 11
+  case smartAlbumTimelapses // = 12
+  case smartAlbumAllHidden // = 13
+  case smartAlbumRecentlyAdded // = 14
+  case smartAlbumBursts // = 15
+  case smartAlbumSlomoVideos // = 16
+  case smartAlbumUserLibrary // = 17
+  case smartAlbumSelfPortraits // = 18
+  case smartAlbumScreenshots // = 19
+  case smartAlbumDepthEffect // = 20
+  case smartAlbumLivePhotos // = 21
+  case smartAlbumAnimated // = 22
+  case smartAlbumLongExposures // = 23
+  case any // = 24
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .albumRegular
+    case 2: self = .albumSyncedEvent
+    case 3: self = .albumSyncedFaces
+    case 4: self = .albumSyncedAlbum
+    case 5: self = .albumImported
+    case 6: self = .albumMyPhotoStream
+    case 7: self = .albumCloudShared
+    case 8: self = .smartAlbumGeneric
+    case 9: self = .smartAlbumPanoramas
+    case 10: self = .smartAlbumVideos
+    case 11: self = .smartAlbumFavorites
+    case 12: self = .smartAlbumTimelapses
+    case 13: self = .smartAlbumAllHidden
+    case 14: self = .smartAlbumRecentlyAdded
+    case 15: self = .smartAlbumBursts
+    case 16: self = .smartAlbumSlomoVideos
+    case 17: self = .smartAlbumUserLibrary
+    case 18: self = .smartAlbumSelfPortraits
+    case 19: self = .smartAlbumScreenshots
+    case 20: self = .smartAlbumDepthEffect
+    case 21: self = .smartAlbumLivePhotos
+    case 22: self = .smartAlbumAnimated
+    case 23: self = .smartAlbumLongExposures
+    case 24: self = .any
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .albumRegular: return 1
+    case .albumSyncedEvent: return 2
+    case .albumSyncedFaces: return 3
+    case .albumSyncedAlbum: return 4
+    case .albumImported: return 5
+    case .albumMyPhotoStream: return 6
+    case .albumCloudShared: return 7
+    case .smartAlbumGeneric: return 8
+    case .smartAlbumPanoramas: return 9
+    case .smartAlbumVideos: return 10
+    case .smartAlbumFavorites: return 11
+    case .smartAlbumTimelapses: return 12
+    case .smartAlbumAllHidden: return 13
+    case .smartAlbumRecentlyAdded: return 14
+    case .smartAlbumBursts: return 15
+    case .smartAlbumSlomoVideos: return 16
+    case .smartAlbumUserLibrary: return 17
+    case .smartAlbumSelfPortraits: return 18
+    case .smartAlbumScreenshots: return 19
+    case .smartAlbumDepthEffect: return 20
+    case .smartAlbumLivePhotos: return 21
+    case .smartAlbumAnimated: return 22
+    case .smartAlbumLongExposures: return 23
+    case .any: return 24
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHAssetCollectionSubtype: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHAssetCollectionSubtype] = [
+    .invalid,
+    .albumRegular,
+    .albumSyncedEvent,
+    .albumSyncedFaces,
+    .albumSyncedAlbum,
+    .albumImported,
+    .albumMyPhotoStream,
+    .albumCloudShared,
+    .smartAlbumGeneric,
+    .smartAlbumPanoramas,
+    .smartAlbumVideos,
+    .smartAlbumFavorites,
+    .smartAlbumTimelapses,
+    .smartAlbumAllHidden,
+    .smartAlbumRecentlyAdded,
+    .smartAlbumBursts,
+    .smartAlbumSlomoVideos,
+    .smartAlbumUserLibrary,
+    .smartAlbumSelfPortraits,
+    .smartAlbumScreenshots,
+    .smartAlbumDepthEffect,
+    .smartAlbumLivePhotos,
+    .smartAlbumAnimated,
+    .smartAlbumLongExposures,
+    .any,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHAssetMediaType: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case image // = 1
+  case video // = 2
+  case audio // = 3
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .image
+    case 2: self = .video
+    case 3: self = .audio
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .image: return 1
+    case .video: return 2
+    case .audio: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHAssetMediaType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHAssetMediaType] = [
+    .invalid,
+    .image,
+    .video,
+    .audio,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum FlutterPhotokit_PHAssetPlaybackStyle: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case unsupported // = 1
+  case image // = 2
+  case imageAnimated // = 3
+  case livePhoto // = 4
+  case video // = 5
+  case videoLooping // = 6
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .unsupported
+    case 2: self = .image
+    case 3: self = .imageAnimated
+    case 4: self = .livePhoto
+    case 5: self = .video
+    case 6: self = .videoLooping
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .unsupported: return 1
+    case .image: return 2
+    case .imageAnimated: return 3
+    case .livePhoto: return 4
+    case .video: return 5
+    case .videoLooping: return 6
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHAssetPlaybackStyle: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHAssetPlaybackStyle] = [
+    .invalid,
+    .unsupported,
+    .image,
+    .imageAnimated,
+    .livePhoto,
+    .video,
+    .videoLooping,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+struct FlutterPhotokit_TriggerRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_TriggerResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
 
 struct FlutterPhotokit_GetAuthorizationStatusRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -82,14 +503,14 @@ struct FlutterPhotokit_GetAuthorizationStatusResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: FlutterPhotokit_AuthorizationStatus = .notDetermined
+  var status: FlutterPhotokit_AuthorizationStatus = .invalid
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct FlutterPhotokit_RequestAuthorizationStatusRequest {
+struct FlutterPhotokit_RequestAuthorizationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -99,12 +520,414 @@ struct FlutterPhotokit_RequestAuthorizationStatusRequest {
   init() {}
 }
 
-struct FlutterPhotokit_RequestAuthorizationStatusResponse {
+struct FlutterPhotokit_RequestAuthorizationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: FlutterPhotokit_AuthorizationStatus = .notDetermined
+  var status: FlutterPhotokit_AuthorizationStatus = .invalid
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_FetchTopLevelUserCollectionsRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var fetchOptions: FlutterPhotokit_PHFetchOptions {
+    get {return _storage._fetchOptions ?? FlutterPhotokit_PHFetchOptions()}
+    set {_uniqueStorage()._fetchOptions = newValue}
+  }
+  /// Returns true if `fetchOptions` has been explicitly set.
+  var hasFetchOptions: Bool {return _storage._fetchOptions != nil}
+  /// Clears the value of `fetchOptions`. Subsequent reads from it will return its default value.
+  mutating func clearFetchOptions() {_uniqueStorage()._fetchOptions = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_FetchTopLevelUserCollectionsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var result: FlutterPhotokit_PHFetchResultPHCollection {
+    get {return _storage._result ?? FlutterPhotokit_PHFetchResultPHCollection()}
+    set {_uniqueStorage()._result = newValue}
+  }
+  /// Returns true if `result` has been explicitly set.
+  var hasResult: Bool {return _storage._result != nil}
+  /// Clears the value of `result`. Subsequent reads from it will return its default value.
+  mutating func clearResult() {_uniqueStorage()._result = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_PHObject {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var localIdentifier: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_PHCollection {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var base: FlutterPhotokit_PHObject {
+    get {return _storage._base ?? FlutterPhotokit_PHObject()}
+    set {_uniqueStorage()._base = newValue}
+  }
+  /// Returns true if `base` has been explicitly set.
+  var hasBase: Bool {return _storage._base != nil}
+  /// Clears the value of `base`. Subsequent reads from it will return its default value.
+  mutating func clearBase() {_uniqueStorage()._base = nil}
+
+  var localizedTitle: String {
+    get {return _storage._localizedTitle}
+    set {_uniqueStorage()._localizedTitle = newValue}
+  }
+
+  var canContainAssets: Bool {
+    get {return _storage._canContainAssets}
+    set {_uniqueStorage()._canContainAssets = newValue}
+  }
+
+  var canContainCollections: Bool {
+    get {return _storage._canContainCollections}
+    set {_uniqueStorage()._canContainCollections = newValue}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_PHCollectionList {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var base: FlutterPhotokit_PHCollection {
+    get {return _storage._base ?? FlutterPhotokit_PHCollection()}
+    set {_uniqueStorage()._base = newValue}
+  }
+  /// Returns true if `base` has been explicitly set.
+  var hasBase: Bool {return _storage._base != nil}
+  /// Clears the value of `base`. Subsequent reads from it will return its default value.
+  mutating func clearBase() {_uniqueStorage()._base = nil}
+
+  var collectionListType: FlutterPhotokit_PHCollectionListType {
+    get {return _storage._collectionListType}
+    set {_uniqueStorage()._collectionListType = newValue}
+  }
+
+  var collectionListSubtype: FlutterPhotokit_PHCollectionListSubtype {
+    get {return _storage._collectionListSubtype}
+    set {_uniqueStorage()._collectionListSubtype = newValue}
+  }
+
+  var startDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._startDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._startDate = newValue}
+  }
+  /// Returns true if `startDate` has been explicitly set.
+  var hasStartDate: Bool {return _storage._startDate != nil}
+  /// Clears the value of `startDate`. Subsequent reads from it will return its default value.
+  mutating func clearStartDate() {_uniqueStorage()._startDate = nil}
+
+  var endDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._endDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._endDate = newValue}
+  }
+  /// Returns true if `endDate` has been explicitly set.
+  var hasEndDate: Bool {return _storage._endDate != nil}
+  /// Clears the value of `endDate`. Subsequent reads from it will return its default value.
+  mutating func clearEndDate() {_uniqueStorage()._endDate = nil}
+
+  var localizedLocationNames: [String] {
+    get {return _storage._localizedLocationNames}
+    set {_uniqueStorage()._localizedLocationNames = newValue}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+/// TODO
+struct FlutterPhotokit_CLLocation {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_PHAssetCollection {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var base: FlutterPhotokit_PHCollection {
+    get {return _storage._base ?? FlutterPhotokit_PHCollection()}
+    set {_uniqueStorage()._base = newValue}
+  }
+  /// Returns true if `base` has been explicitly set.
+  var hasBase: Bool {return _storage._base != nil}
+  /// Clears the value of `base`. Subsequent reads from it will return its default value.
+  mutating func clearBase() {_uniqueStorage()._base = nil}
+
+  var assetCollectionType: FlutterPhotokit_PHAssetCollectionType {
+    get {return _storage._assetCollectionType}
+    set {_uniqueStorage()._assetCollectionType = newValue}
+  }
+
+  var assetCollectionSubtype: FlutterPhotokit_PHAssetCollectionSubtype {
+    get {return _storage._assetCollectionSubtype}
+    set {_uniqueStorage()._assetCollectionSubtype = newValue}
+  }
+
+  var estimatedAssetCount: Int64 {
+    get {return _storage._estimatedAssetCount}
+    set {_uniqueStorage()._estimatedAssetCount = newValue}
+  }
+
+  var startDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._startDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._startDate = newValue}
+  }
+  /// Returns true if `startDate` has been explicitly set.
+  var hasStartDate: Bool {return _storage._startDate != nil}
+  /// Clears the value of `startDate`. Subsequent reads from it will return its default value.
+  mutating func clearStartDate() {_uniqueStorage()._startDate = nil}
+
+  var endDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._endDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._endDate = newValue}
+  }
+  /// Returns true if `endDate` has been explicitly set.
+  var hasEndDate: Bool {return _storage._endDate != nil}
+  /// Clears the value of `endDate`. Subsequent reads from it will return its default value.
+  mutating func clearEndDate() {_uniqueStorage()._endDate = nil}
+
+  var approximateLocation: FlutterPhotokit_CLLocation {
+    get {return _storage._approximateLocation ?? FlutterPhotokit_CLLocation()}
+    set {_uniqueStorage()._approximateLocation = newValue}
+  }
+  /// Returns true if `approximateLocation` has been explicitly set.
+  var hasApproximateLocation: Bool {return _storage._approximateLocation != nil}
+  /// Clears the value of `approximateLocation`. Subsequent reads from it will return its default value.
+  mutating func clearApproximateLocation() {_uniqueStorage()._approximateLocation = nil}
+
+  var localizedLocationNames: [String] {
+    get {return _storage._localizedLocationNames}
+    set {_uniqueStorage()._localizedLocationNames = newValue}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_PHAsset {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var base: FlutterPhotokit_PHObject {
+    get {return _storage._base ?? FlutterPhotokit_PHObject()}
+    set {_uniqueStorage()._base = newValue}
+  }
+  /// Returns true if `base` has been explicitly set.
+  var hasBase: Bool {return _storage._base != nil}
+  /// Clears the value of `base`. Subsequent reads from it will return its default value.
+  mutating func clearBase() {_uniqueStorage()._base = nil}
+
+  var mediaType: FlutterPhotokit_PHAssetMediaType {
+    get {return _storage._mediaType}
+    set {_uniqueStorage()._mediaType = newValue}
+  }
+
+  /// PHAssetMediaSubtype = 3;
+  /// PHAssetSourceType = 4;
+  var pixelWidth: Int64 {
+    get {return _storage._pixelWidth}
+    set {_uniqueStorage()._pixelWidth = newValue}
+  }
+
+  var pixelHeight: Int64 {
+    get {return _storage._pixelHeight}
+    set {_uniqueStorage()._pixelHeight = newValue}
+  }
+
+  var creationDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._creationDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._creationDate = newValue}
+  }
+  /// Returns true if `creationDate` has been explicitly set.
+  var hasCreationDate: Bool {return _storage._creationDate != nil}
+  /// Clears the value of `creationDate`. Subsequent reads from it will return its default value.
+  mutating func clearCreationDate() {_uniqueStorage()._creationDate = nil}
+
+  var modificationDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._modificationDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._modificationDate = newValue}
+  }
+  /// Returns true if `modificationDate` has been explicitly set.
+  var hasModificationDate: Bool {return _storage._modificationDate != nil}
+  /// Clears the value of `modificationDate`. Subsequent reads from it will return its default value.
+  mutating func clearModificationDate() {_uniqueStorage()._modificationDate = nil}
+
+  var location: FlutterPhotokit_CLLocation {
+    get {return _storage._location ?? FlutterPhotokit_CLLocation()}
+    set {_uniqueStorage()._location = newValue}
+  }
+  /// Returns true if `location` has been explicitly set.
+  var hasLocation: Bool {return _storage._location != nil}
+  /// Clears the value of `location`. Subsequent reads from it will return its default value.
+  mutating func clearLocation() {_uniqueStorage()._location = nil}
+
+  var duration: SwiftProtobuf.Google_Protobuf_Duration {
+    get {return _storage._duration ?? SwiftProtobuf.Google_Protobuf_Duration()}
+    set {_uniqueStorage()._duration = newValue}
+  }
+  /// Returns true if `duration` has been explicitly set.
+  var hasDuration: Bool {return _storage._duration != nil}
+  /// Clears the value of `duration`. Subsequent reads from it will return its default value.
+  mutating func clearDuration() {_uniqueStorage()._duration = nil}
+
+  var isFavorite: Bool {
+    get {return _storage._isFavorite}
+    set {_uniqueStorage()._isFavorite = newValue}
+  }
+
+  var isHidden: Bool {
+    get {return _storage._isHidden}
+    set {_uniqueStorage()._isHidden = newValue}
+  }
+
+  var isSyncFailureHidden: Bool {
+    get {return _storage._isSyncFailureHidden}
+    set {_uniqueStorage()._isSyncFailureHidden = newValue}
+  }
+
+  var playbackStyle: FlutterPhotokit_PHAssetPlaybackStyle {
+    get {return _storage._playbackStyle}
+    set {_uniqueStorage()._playbackStyle = newValue}
+  }
+
+  var burstIdentifier: String {
+    get {return _storage._burstIdentifier}
+    set {_uniqueStorage()._burstIdentifier = newValue}
+  }
+
+  /// PHAssetBurstSelectionType burst_selection_types = 16;
+  var representsBurst: Bool {
+    get {return _storage._representsBurst}
+    set {_uniqueStorage()._representsBurst = newValue}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_AssetCollectionOrCollectionList {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var collection: OneOf_Collection? {
+    get {return _storage._collection}
+    set {_uniqueStorage()._collection = newValue}
+  }
+
+  var collectionList: FlutterPhotokit_PHCollectionList {
+    get {
+      if case .collectionList(let v)? = _storage._collection {return v}
+      return FlutterPhotokit_PHCollectionList()
+    }
+    set {_uniqueStorage()._collection = .collectionList(newValue)}
+  }
+
+  var assetCollection: FlutterPhotokit_PHAssetCollection {
+    get {
+      if case .assetCollection(let v)? = _storage._collection {return v}
+      return FlutterPhotokit_PHAssetCollection()
+    }
+    set {_uniqueStorage()._collection = .assetCollection(newValue)}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum OneOf_Collection: Equatable {
+    case collectionList(FlutterPhotokit_PHCollectionList)
+    case assetCollection(FlutterPhotokit_PHAssetCollection)
+
+  #if !swift(>=4.1)
+    static func ==(lhs: FlutterPhotokit_AssetCollectionOrCollectionList.OneOf_Collection, rhs: FlutterPhotokit_AssetCollectionOrCollectionList.OneOf_Collection) -> Bool {
+      switch (lhs, rhs) {
+      case (.collectionList(let l), .collectionList(let r)): return l == r
+      case (.assetCollection(let l), .assetCollection(let r)): return l == r
+      default: return false
+      }
+    }
+  #endif
+  }
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_PHFetchResultPHCollection {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var results: [FlutterPhotokit_AssetCollectionOrCollectionList] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_PHFetchOptions {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var includeAllBurstAssets: Bool = false
+
+  var includeHiddenAssets: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -117,11 +940,131 @@ fileprivate let _protobuf_package = "flutter_photokit"
 
 extension FlutterPhotokit_AuthorizationStatus: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "NOT_DETERMINED"),
-    1: .same(proto: "RESTRICTED"),
-    2: .same(proto: "DENIED"),
-    3: .same(proto: "AUTHORIZED"),
+    0: .same(proto: "AUTHORIZATION_STATUS_INVALID"),
+    1: .same(proto: "AUTHORIZATION_STATUS_NOT_DETERMINED"),
+    2: .same(proto: "AUTHORIZATION_STATUS_RESTRICTED"),
+    3: .same(proto: "AUTHORIZATION_STATUS_DENIED"),
+    4: .same(proto: "AUTHORIZATION_STATUS_AUTHORIZED"),
   ]
+}
+
+extension FlutterPhotokit_PHCollectionListType: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_COLLECTION_LIST_TYPE_INVALID"),
+    1: .same(proto: "PH_COLLECTION_LIST_TYPE_MOMENT_LIST"),
+    2: .same(proto: "PH_COLLECTION_LIST_TYPE_FOLDER"),
+    3: .same(proto: "PH_COLLECTION_LIST_TYPE_SMART_FOLDER"),
+  ]
+}
+
+extension FlutterPhotokit_PHCollectionListSubtype: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_INVALID"),
+    1: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_MOMENT_LIST_CLUSTER"),
+    2: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_MOMENT_LIST_YEAR"),
+    3: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_REGULAR_FOLDER"),
+    4: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_SMART_FOLDER_EVENTS"),
+    5: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_SMART_FOLDER_FACES"),
+    6: .same(proto: "PH_COLLECTION_LIST_SUBTYPE_ANY"),
+  ]
+}
+
+extension FlutterPhotokit_PHAssetCollectionType: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_ASSET_COLLECTION_TYPE_INVALID"),
+    1: .same(proto: "PH_ASSET_COLLECTION_TYPE_ALBUM"),
+    2: .same(proto: "PH_ASSET_COLLECTION_TYPE_SMART_ALBUM"),
+    3: .same(proto: "PH_ASSET_COLLECTION_TYPE_MOMENT"),
+  ]
+}
+
+extension FlutterPhotokit_PHAssetCollectionSubtype: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_INVALID"),
+    1: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_REGULAR"),
+    2: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_EVENT"),
+    3: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_FACES"),
+    4: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_ALBUM"),
+    5: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_IMPORTED"),
+    6: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_MY_PHOTO_STREAM"),
+    7: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ALBUM_CLOUD_SHARED"),
+    8: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_GENERIC"),
+    9: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_PANORAMAS"),
+    10: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_VIDEOS"),
+    11: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_FAVORITES"),
+    12: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_TIMELAPSES"),
+    13: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ALL_HIDDEN"),
+    14: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_RECENTLY_ADDED"),
+    15: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_BURSTS"),
+    16: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SLOMO_VIDEOS"),
+    17: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_USER_LIBRARY"),
+    18: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SELF_PORTRAITS"),
+    19: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SCREENSHOTS"),
+    20: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_DEPTH_EFFECT"),
+    21: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LIVE_PHOTOS"),
+    22: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED"),
+    23: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES"),
+    24: .same(proto: "PH_ASSET_COLLECTION_SUBTYPE_ANY"),
+  ]
+}
+
+extension FlutterPhotokit_PHAssetMediaType: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_ASSET_MEDIA_TYPE_INVALID"),
+    1: .same(proto: "PH_ASSET_MEDIA_TYPE_IMAGE"),
+    2: .same(proto: "PH_ASSET_MEDIA_TYPE_VIDEO"),
+    3: .same(proto: "PH_ASSET_MEDIA_TYPE_AUDIO"),
+  ]
+}
+
+extension FlutterPhotokit_PHAssetPlaybackStyle: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_ASSET_PLAYBACK_STYLE_INVALID"),
+    1: .same(proto: "PH_ASSET_PLAYBACK_STYLE_UNSUPPORTED"),
+    2: .same(proto: "PH_ASSET_PLAYBACK_STYLE_IMAGE"),
+    3: .same(proto: "PH_ASSET_PLAYBACK_STYLE_IMAGE_ANIMATED"),
+    4: .same(proto: "PH_ASSET_PLAYBACK_STYLE_LIVE_PHOTO"),
+    5: .same(proto: "PH_ASSET_PLAYBACK_STYLE_VIDEO"),
+    6: .same(proto: "PH_ASSET_PLAYBACK_STYLE_VIDEO_LOOPING"),
+  ]
+}
+
+extension FlutterPhotokit_TriggerRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".TriggerRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_TriggerRequest, rhs: FlutterPhotokit_TriggerRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_TriggerResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".TriggerResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_TriggerResponse, rhs: FlutterPhotokit_TriggerResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
 
 extension FlutterPhotokit_GetAuthorizationStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -159,7 +1102,7 @@ extension FlutterPhotokit_GetAuthorizationStatusResponse: SwiftProtobuf.Message,
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.status != .notDetermined {
+    if self.status != .invalid {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -172,8 +1115,8 @@ extension FlutterPhotokit_GetAuthorizationStatusResponse: SwiftProtobuf.Message,
   }
 }
 
-extension FlutterPhotokit_RequestAuthorizationStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RequestAuthorizationStatusRequest"
+extension FlutterPhotokit_RequestAuthorizationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".RequestAuthorizationRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -185,14 +1128,14 @@ extension FlutterPhotokit_RequestAuthorizationStatusRequest: SwiftProtobuf.Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: FlutterPhotokit_RequestAuthorizationStatusRequest, rhs: FlutterPhotokit_RequestAuthorizationStatusRequest) -> Bool {
+  static func ==(lhs: FlutterPhotokit_RequestAuthorizationRequest, rhs: FlutterPhotokit_RequestAuthorizationRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension FlutterPhotokit_RequestAuthorizationStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RequestAuthorizationStatusResponse"
+extension FlutterPhotokit_RequestAuthorizationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".RequestAuthorizationResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
@@ -207,14 +1150,797 @@ extension FlutterPhotokit_RequestAuthorizationStatusResponse: SwiftProtobuf.Mess
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.status != .notDetermined {
+    if self.status != .invalid {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: FlutterPhotokit_RequestAuthorizationStatusResponse, rhs: FlutterPhotokit_RequestAuthorizationStatusResponse) -> Bool {
+  static func ==(lhs: FlutterPhotokit_RequestAuthorizationResponse, rhs: FlutterPhotokit_RequestAuthorizationResponse) -> Bool {
     if lhs.status != rhs.status {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_FetchTopLevelUserCollectionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".FetchTopLevelUserCollectionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "fetch_options"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _fetchOptions: FlutterPhotokit_PHFetchOptions? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _fetchOptions = source._fetchOptions
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._fetchOptions)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._fetchOptions {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_FetchTopLevelUserCollectionsRequest, rhs: FlutterPhotokit_FetchTopLevelUserCollectionsRequest) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._fetchOptions != rhs_storage._fetchOptions {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_FetchTopLevelUserCollectionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".FetchTopLevelUserCollectionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "result"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _result: FlutterPhotokit_PHFetchResultPHCollection? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _result = source._result
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._result)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._result {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_FetchTopLevelUserCollectionsResponse, rhs: FlutterPhotokit_FetchTopLevelUserCollectionsResponse) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._result != rhs_storage._result {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHObject: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHObject"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "local_identifier"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.localIdentifier)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.localIdentifier, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHObject, rhs: FlutterPhotokit_PHObject) -> Bool {
+    if lhs.localIdentifier != rhs.localIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHCollection"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "base"),
+    2: .standard(proto: "localized_title"),
+    3: .standard(proto: "can_contain_assets"),
+    4: .standard(proto: "can_contain_collections"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _base: FlutterPhotokit_PHObject? = nil
+    var _localizedTitle: String = String()
+    var _canContainAssets: Bool = false
+    var _canContainCollections: Bool = false
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _base = source._base
+      _localizedTitle = source._localizedTitle
+      _canContainAssets = source._canContainAssets
+      _canContainCollections = source._canContainCollections
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._base)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._localizedTitle)
+        case 3: try decoder.decodeSingularBoolField(value: &_storage._canContainAssets)
+        case 4: try decoder.decodeSingularBoolField(value: &_storage._canContainCollections)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._base {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if !_storage._localizedTitle.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._localizedTitle, fieldNumber: 2)
+      }
+      if _storage._canContainAssets != false {
+        try visitor.visitSingularBoolField(value: _storage._canContainAssets, fieldNumber: 3)
+      }
+      if _storage._canContainCollections != false {
+        try visitor.visitSingularBoolField(value: _storage._canContainCollections, fieldNumber: 4)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHCollection, rhs: FlutterPhotokit_PHCollection) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._base != rhs_storage._base {return false}
+        if _storage._localizedTitle != rhs_storage._localizedTitle {return false}
+        if _storage._canContainAssets != rhs_storage._canContainAssets {return false}
+        if _storage._canContainCollections != rhs_storage._canContainCollections {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHCollectionList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHCollectionList"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "base"),
+    2: .standard(proto: "collection_list_type"),
+    3: .standard(proto: "collection_list_subtype"),
+    4: .standard(proto: "start_date"),
+    5: .standard(proto: "end_date"),
+    6: .standard(proto: "localized_location_names"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _base: FlutterPhotokit_PHCollection? = nil
+    var _collectionListType: FlutterPhotokit_PHCollectionListType = .invalid
+    var _collectionListSubtype: FlutterPhotokit_PHCollectionListSubtype = .invalid
+    var _startDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _endDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _localizedLocationNames: [String] = []
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _base = source._base
+      _collectionListType = source._collectionListType
+      _collectionListSubtype = source._collectionListSubtype
+      _startDate = source._startDate
+      _endDate = source._endDate
+      _localizedLocationNames = source._localizedLocationNames
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._base)
+        case 2: try decoder.decodeSingularEnumField(value: &_storage._collectionListType)
+        case 3: try decoder.decodeSingularEnumField(value: &_storage._collectionListSubtype)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._startDate)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._endDate)
+        case 6: try decoder.decodeRepeatedStringField(value: &_storage._localizedLocationNames)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._base {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if _storage._collectionListType != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._collectionListType, fieldNumber: 2)
+      }
+      if _storage._collectionListSubtype != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._collectionListSubtype, fieldNumber: 3)
+      }
+      if let v = _storage._startDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      }
+      if let v = _storage._endDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
+      if !_storage._localizedLocationNames.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._localizedLocationNames, fieldNumber: 6)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHCollectionList, rhs: FlutterPhotokit_PHCollectionList) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._base != rhs_storage._base {return false}
+        if _storage._collectionListType != rhs_storage._collectionListType {return false}
+        if _storage._collectionListSubtype != rhs_storage._collectionListSubtype {return false}
+        if _storage._startDate != rhs_storage._startDate {return false}
+        if _storage._endDate != rhs_storage._endDate {return false}
+        if _storage._localizedLocationNames != rhs_storage._localizedLocationNames {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_CLLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".CLLocation"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_CLLocation, rhs: FlutterPhotokit_CLLocation) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHAssetCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHAssetCollection"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "base"),
+    2: .standard(proto: "asset_collection_type"),
+    3: .standard(proto: "asset_collection_subtype"),
+    4: .standard(proto: "estimated_asset_count"),
+    5: .standard(proto: "start_date"),
+    6: .standard(proto: "end_date"),
+    7: .standard(proto: "approximate_location"),
+    8: .standard(proto: "localized_location_names"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _base: FlutterPhotokit_PHCollection? = nil
+    var _assetCollectionType: FlutterPhotokit_PHAssetCollectionType = .invalid
+    var _assetCollectionSubtype: FlutterPhotokit_PHAssetCollectionSubtype = .invalid
+    var _estimatedAssetCount: Int64 = 0
+    var _startDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _endDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _approximateLocation: FlutterPhotokit_CLLocation? = nil
+    var _localizedLocationNames: [String] = []
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _base = source._base
+      _assetCollectionType = source._assetCollectionType
+      _assetCollectionSubtype = source._assetCollectionSubtype
+      _estimatedAssetCount = source._estimatedAssetCount
+      _startDate = source._startDate
+      _endDate = source._endDate
+      _approximateLocation = source._approximateLocation
+      _localizedLocationNames = source._localizedLocationNames
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._base)
+        case 2: try decoder.decodeSingularEnumField(value: &_storage._assetCollectionType)
+        case 3: try decoder.decodeSingularEnumField(value: &_storage._assetCollectionSubtype)
+        case 4: try decoder.decodeSingularInt64Field(value: &_storage._estimatedAssetCount)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._startDate)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._endDate)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._approximateLocation)
+        case 8: try decoder.decodeRepeatedStringField(value: &_storage._localizedLocationNames)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._base {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if _storage._assetCollectionType != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._assetCollectionType, fieldNumber: 2)
+      }
+      if _storage._assetCollectionSubtype != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._assetCollectionSubtype, fieldNumber: 3)
+      }
+      if _storage._estimatedAssetCount != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._estimatedAssetCount, fieldNumber: 4)
+      }
+      if let v = _storage._startDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
+      if let v = _storage._endDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      }
+      if let v = _storage._approximateLocation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      }
+      if !_storage._localizedLocationNames.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._localizedLocationNames, fieldNumber: 8)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHAssetCollection, rhs: FlutterPhotokit_PHAssetCollection) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._base != rhs_storage._base {return false}
+        if _storage._assetCollectionType != rhs_storage._assetCollectionType {return false}
+        if _storage._assetCollectionSubtype != rhs_storage._assetCollectionSubtype {return false}
+        if _storage._estimatedAssetCount != rhs_storage._estimatedAssetCount {return false}
+        if _storage._startDate != rhs_storage._startDate {return false}
+        if _storage._endDate != rhs_storage._endDate {return false}
+        if _storage._approximateLocation != rhs_storage._approximateLocation {return false}
+        if _storage._localizedLocationNames != rhs_storage._localizedLocationNames {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHAsset"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "base"),
+    2: .standard(proto: "media_type"),
+    5: .standard(proto: "pixel_width"),
+    6: .standard(proto: "pixel_height"),
+    7: .standard(proto: "creation_date"),
+    8: .standard(proto: "modification_date"),
+    9: .same(proto: "location"),
+    10: .same(proto: "duration"),
+    11: .standard(proto: "is_favorite"),
+    12: .standard(proto: "is_hidden"),
+    13: .standard(proto: "is_sync_failure_hidden"),
+    14: .standard(proto: "playback_style"),
+    15: .standard(proto: "burst_identifier"),
+    16: .standard(proto: "represents_burst"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _base: FlutterPhotokit_PHObject? = nil
+    var _mediaType: FlutterPhotokit_PHAssetMediaType = .invalid
+    var _pixelWidth: Int64 = 0
+    var _pixelHeight: Int64 = 0
+    var _creationDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _modificationDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _location: FlutterPhotokit_CLLocation? = nil
+    var _duration: SwiftProtobuf.Google_Protobuf_Duration? = nil
+    var _isFavorite: Bool = false
+    var _isHidden: Bool = false
+    var _isSyncFailureHidden: Bool = false
+    var _playbackStyle: FlutterPhotokit_PHAssetPlaybackStyle = .invalid
+    var _burstIdentifier: String = String()
+    var _representsBurst: Bool = false
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _base = source._base
+      _mediaType = source._mediaType
+      _pixelWidth = source._pixelWidth
+      _pixelHeight = source._pixelHeight
+      _creationDate = source._creationDate
+      _modificationDate = source._modificationDate
+      _location = source._location
+      _duration = source._duration
+      _isFavorite = source._isFavorite
+      _isHidden = source._isHidden
+      _isSyncFailureHidden = source._isSyncFailureHidden
+      _playbackStyle = source._playbackStyle
+      _burstIdentifier = source._burstIdentifier
+      _representsBurst = source._representsBurst
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._base)
+        case 2: try decoder.decodeSingularEnumField(value: &_storage._mediaType)
+        case 5: try decoder.decodeSingularInt64Field(value: &_storage._pixelWidth)
+        case 6: try decoder.decodeSingularInt64Field(value: &_storage._pixelHeight)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._creationDate)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._modificationDate)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._location)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._duration)
+        case 11: try decoder.decodeSingularBoolField(value: &_storage._isFavorite)
+        case 12: try decoder.decodeSingularBoolField(value: &_storage._isHidden)
+        case 13: try decoder.decodeSingularBoolField(value: &_storage._isSyncFailureHidden)
+        case 14: try decoder.decodeSingularEnumField(value: &_storage._playbackStyle)
+        case 15: try decoder.decodeSingularStringField(value: &_storage._burstIdentifier)
+        case 16: try decoder.decodeSingularBoolField(value: &_storage._representsBurst)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._base {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if _storage._mediaType != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._mediaType, fieldNumber: 2)
+      }
+      if _storage._pixelWidth != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._pixelWidth, fieldNumber: 5)
+      }
+      if _storage._pixelHeight != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._pixelHeight, fieldNumber: 6)
+      }
+      if let v = _storage._creationDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      }
+      if let v = _storage._modificationDate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      }
+      if let v = _storage._location {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      }
+      if let v = _storage._duration {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+      }
+      if _storage._isFavorite != false {
+        try visitor.visitSingularBoolField(value: _storage._isFavorite, fieldNumber: 11)
+      }
+      if _storage._isHidden != false {
+        try visitor.visitSingularBoolField(value: _storage._isHidden, fieldNumber: 12)
+      }
+      if _storage._isSyncFailureHidden != false {
+        try visitor.visitSingularBoolField(value: _storage._isSyncFailureHidden, fieldNumber: 13)
+      }
+      if _storage._playbackStyle != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._playbackStyle, fieldNumber: 14)
+      }
+      if !_storage._burstIdentifier.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._burstIdentifier, fieldNumber: 15)
+      }
+      if _storage._representsBurst != false {
+        try visitor.visitSingularBoolField(value: _storage._representsBurst, fieldNumber: 16)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHAsset, rhs: FlutterPhotokit_PHAsset) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._base != rhs_storage._base {return false}
+        if _storage._mediaType != rhs_storage._mediaType {return false}
+        if _storage._pixelWidth != rhs_storage._pixelWidth {return false}
+        if _storage._pixelHeight != rhs_storage._pixelHeight {return false}
+        if _storage._creationDate != rhs_storage._creationDate {return false}
+        if _storage._modificationDate != rhs_storage._modificationDate {return false}
+        if _storage._location != rhs_storage._location {return false}
+        if _storage._duration != rhs_storage._duration {return false}
+        if _storage._isFavorite != rhs_storage._isFavorite {return false}
+        if _storage._isHidden != rhs_storage._isHidden {return false}
+        if _storage._isSyncFailureHidden != rhs_storage._isSyncFailureHidden {return false}
+        if _storage._playbackStyle != rhs_storage._playbackStyle {return false}
+        if _storage._burstIdentifier != rhs_storage._burstIdentifier {return false}
+        if _storage._representsBurst != rhs_storage._representsBurst {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_AssetCollectionOrCollectionList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AssetCollectionOrCollectionList"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "collection_list"),
+    2: .standard(proto: "asset_collection"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _collection: FlutterPhotokit_AssetCollectionOrCollectionList.OneOf_Collection?
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _collection = source._collection
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1:
+          var v: FlutterPhotokit_PHCollectionList?
+          if let current = _storage._collection {
+            try decoder.handleConflictingOneOf()
+            if case .collectionList(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._collection = .collectionList(v)}
+        case 2:
+          var v: FlutterPhotokit_PHAssetCollection?
+          if let current = _storage._collection {
+            try decoder.handleConflictingOneOf()
+            if case .assetCollection(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._collection = .assetCollection(v)}
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      switch _storage._collection {
+      case .collectionList(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      case .assetCollection(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      case nil: break
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_AssetCollectionOrCollectionList, rhs: FlutterPhotokit_AssetCollectionOrCollectionList) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._collection != rhs_storage._collection {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHFetchResultPHCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHFetchResultPHCollection"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "results"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedMessageField(value: &self.results)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.results.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.results, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHFetchResultPHCollection, rhs: FlutterPhotokit_PHFetchResultPHCollection) -> Bool {
+    if lhs.results != rhs.results {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHFetchOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHFetchOptions"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "include_all_burst_assets"),
+    2: .standard(proto: "include_hidden_assets"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.includeAllBurstAssets)
+      case 2: try decoder.decodeSingularBoolField(value: &self.includeHiddenAssets)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.includeAllBurstAssets != false {
+      try visitor.visitSingularBoolField(value: self.includeAllBurstAssets, fieldNumber: 1)
+    }
+    if self.includeHiddenAssets != false {
+      try visitor.visitSingularBoolField(value: self.includeHiddenAssets, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHFetchOptions, rhs: FlutterPhotokit_PHFetchOptions) -> Bool {
+    if lhs.includeAllBurstAssets != rhs.includeAllBurstAssets {return false}
+    if lhs.includeHiddenAssets != rhs.includeHiddenAssets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

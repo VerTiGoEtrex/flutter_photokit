@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 import 'dart:async';
 
@@ -17,9 +18,22 @@ class FlutterPhotokit {
   }
 
   Future<AuthorizationStatus> requestAuth() async {
-    final response = await api.requestAuthorization(
-        _ctx, RequestAuthorizationStatusRequest());
+    final response =
+        await api.requestAuthorization(_ctx, RequestAuthorizationRequest());
     return response.status;
+  }
+
+  Future<void> trigger() async {
+    final response = await api.trigger(_ctx, TriggerRequest());
+  }
+
+  Future<FetchTopLevelUserCollectionsResponse>
+      fetchTopLevelUserCollections() async {
+    final x = await api.fetchTopLevelUserCollections(
+        _ctx,
+        FetchTopLevelUserCollectionsRequest()
+          ..fetchOptions = (PHFetchOptions()..includeHiddenAssets = true));
+    return x;
   }
 }
 

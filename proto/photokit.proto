@@ -2,9 +2,29 @@ syntax = "proto3";
 
 package flutter_photokit;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+
+// PHPhotoLibrary
 service PhotoKit {
-    rpc getAuthorizationStatus(GetAuthorizationStatusRequest) returns (GetAuthorizationStatusResponse) {}
-    rpc requestAuthorization(RequestAuthorizationStatusRequest) returns (RequestAuthorizationStatusResponse) {}
+    // Debug stuff
+    rpc Trigger(TriggerRequest) returns (TriggerResponse) {}
+
+    // Auth status
+    rpc GetAuthorizationStatus(GetAuthorizationStatusRequest) returns (GetAuthorizationStatusResponse) {}
+    rpc RequestAuthorization(RequestAuthorizationRequest) returns (RequestAuthorizationResponse) {}
+
+    // PHCollection
+    rpc FetchTopLevelUserCollections(FetchTopLevelUserCollectionsRequest) returns (FetchTopLevelUserCollectionsResponse) {}
+}
+
+message TriggerRequest {
+
+}
+
+message TriggerResponse {
+
 }
 
 message GetAuthorizationStatusRequest {
@@ -14,16 +34,166 @@ message GetAuthorizationStatusResponse {
     AuthorizationStatus status = 1;
 }
 
-message RequestAuthorizationStatusRequest {
+message RequestAuthorizationRequest {
 }
 
-message RequestAuthorizationStatusResponse {
+message RequestAuthorizationResponse {
     AuthorizationStatus status = 1;
 }
 
+message FetchTopLevelUserCollectionsRequest {
+    PHFetchOptions fetch_options = 1;
+}
+
+message FetchTopLevelUserCollectionsResponse {
+    PHFetchResultPHCollection result = 1;
+}
+
+// Photokit Types
 enum AuthorizationStatus {
-    NOT_DETERMINED = 0;
-    RESTRICTED = 1;
-    DENIED = 2;
-    AUTHORIZED = 3;
+    AUTHORIZATION_STATUS_INVALID = 0;
+    AUTHORIZATION_STATUS_NOT_DETERMINED = 1;
+    AUTHORIZATION_STATUS_RESTRICTED = 2;
+    AUTHORIZATION_STATUS_DENIED = 3;
+    AUTHORIZATION_STATUS_AUTHORIZED = 4;
+}
+
+message PHObject {
+    string local_identifier = 1;
+}
+
+message PHCollection {
+    PHObject base = 1;
+    string localized_title = 2;
+    bool can_contain_assets = 3;
+    bool can_contain_collections = 4;
+}
+
+enum PHCollectionListType {
+    PH_COLLECTION_LIST_TYPE_INVALID = 0;
+    PH_COLLECTION_LIST_TYPE_MOMENT_LIST = 1;
+    PH_COLLECTION_LIST_TYPE_FOLDER = 2;
+    PH_COLLECTION_LIST_TYPE_SMART_FOLDER = 3;
+}
+
+enum PHCollectionListSubtype {
+    PH_COLLECTION_LIST_SUBTYPE_INVALID = 0;
+    PH_COLLECTION_LIST_SUBTYPE_MOMENT_LIST_CLUSTER = 1;
+    PH_COLLECTION_LIST_SUBTYPE_MOMENT_LIST_YEAR = 2;
+    PH_COLLECTION_LIST_SUBTYPE_REGULAR_FOLDER = 3;
+    PH_COLLECTION_LIST_SUBTYPE_SMART_FOLDER_EVENTS = 4;
+    PH_COLLECTION_LIST_SUBTYPE_SMART_FOLDER_FACES = 5;
+    PH_COLLECTION_LIST_SUBTYPE_ANY = 6;
+}
+
+message PHCollectionList {
+    PHCollection base = 1;
+    PHCollectionListType collection_list_type = 2;
+    PHCollectionListSubtype collection_list_subtype = 3;
+    google.protobuf.Timestamp start_date = 4;
+    google.protobuf.Timestamp end_date = 5;
+    repeated string localized_location_names = 6;
+}
+
+enum PHAssetCollectionType {
+    PH_ASSET_COLLECTION_TYPE_INVALID = 0;
+    PH_ASSET_COLLECTION_TYPE_ALBUM = 1;
+    PH_ASSET_COLLECTION_TYPE_SMART_ALBUM = 2;
+    PH_ASSET_COLLECTION_TYPE_MOMENT = 3;
+}
+
+enum PHAssetCollectionSubtype {
+    PH_ASSET_COLLECTION_SUBTYPE_INVALID = 0;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_REGULAR = 1;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_EVENT = 2;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_FACES = 3;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_SYNCED_ALBUM = 4;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_IMPORTED= 5;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_MY_PHOTO_STREAM=6;
+    PH_ASSET_COLLECTION_SUBTYPE_ALBUM_CLOUD_SHARED=7;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_GENERIC=8;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_PANORAMAS=9;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_VIDEOS=10;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_FAVORITES=11;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_TIMELAPSES=12;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ALL_HIDDEN=13;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_RECENTLY_ADDED=14;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_BURSTS=15;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SLOMO_VIDEOS=16;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_USER_LIBRARY=17;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SELF_PORTRAITS=18;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_SCREENSHOTS=19;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_DEPTH_EFFECT=20;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LIVE_PHOTOS=21;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED=22;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES=23;
+    PH_ASSET_COLLECTION_SUBTYPE_ANY=24;
+}
+
+message CLLocation {
+    // TODO
+}
+
+message PHAssetCollection {
+    PHCollection base = 1;
+    PHAssetCollectionType asset_collection_type = 2;
+    PHAssetCollectionSubtype asset_collection_subtype = 3;
+    int64 estimated_asset_count = 4;
+    google.protobuf.Timestamp start_date = 5;
+    google.protobuf.Timestamp end_date = 6;
+    CLLocation approximate_location = 7;
+    repeated string localized_location_names = 8;
+}
+
+enum PHAssetMediaType {
+    PH_ASSET_MEDIA_TYPE_INVALID = 0;
+    PH_ASSET_MEDIA_TYPE_IMAGE = 1;
+    PH_ASSET_MEDIA_TYPE_VIDEO = 2;
+    PH_ASSET_MEDIA_TYPE_AUDIO = 3;
+}
+
+enum PHAssetPlaybackStyle {
+    PH_ASSET_PLAYBACK_STYLE_INVALID = 0;
+    PH_ASSET_PLAYBACK_STYLE_UNSUPPORTED = 1;
+    PH_ASSET_PLAYBACK_STYLE_IMAGE = 2;
+    PH_ASSET_PLAYBACK_STYLE_IMAGE_ANIMATED = 3;
+    PH_ASSET_PLAYBACK_STYLE_LIVE_PHOTO =4;
+    PH_ASSET_PLAYBACK_STYLE_VIDEO = 5;
+    PH_ASSET_PLAYBACK_STYLE_VIDEO_LOOPING =6;
+}
+
+message PHAsset {
+    PHObject base = 1;
+    PHAssetMediaType media_type = 2;
+    // PHAssetMediaSubtype = 3;
+    // PHAssetSourceType = 4;
+    int64 pixel_width = 5;
+    int64 pixel_height = 6;
+    google.protobuf.Timestamp creation_date = 7;
+    google.protobuf.Timestamp modification_date = 8;
+    CLLocation location = 9;
+    google.protobuf.Duration duration = 10;
+    bool is_favorite = 11;
+    bool is_hidden = 12;
+    bool is_sync_failure_hidden = 13;
+    PHAssetPlaybackStyle playback_style = 14;
+    string burst_identifier = 15;
+    // PHAssetBurstSelectionType burst_selection_types = 16;
+    bool represents_burst = 16;
+}
+
+message AssetCollectionOrCollectionList {
+    oneof collection {
+        PHCollectionList collection_list = 1;
+        PHAssetCollection asset_collection = 2;
+    }
+}
+
+message PHFetchResultPHCollection {
+    repeated AssetCollectionOrCollectionList results = 1;
+}
+
+message PHFetchOptions {
+    bool include_all_burst_assets = 1;
+    bool include_hidden_assets = 2;
 }
