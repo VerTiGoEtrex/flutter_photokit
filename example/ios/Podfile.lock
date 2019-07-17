@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
-  flutter_photokit: c51d449a3a3cb239b23da2772d7e563ae8a73aa2
+  flutter_photokit: a10767351b7a371cafbb4b7030aff6ddaae96a69
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
 

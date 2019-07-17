@@ -17,6 +17,14 @@ service PhotoKit {
 
     // PHCollection
     rpc FetchTopLevelUserCollections(FetchTopLevelUserCollectionsRequest) returns (FetchTopLevelUserCollectionsResponse) {}
+    rpc FetchCollectionsInCollectionList(FetchCollectionsInCollectionListRequest) returns (FetchCollectionsInCollectionListResponse) {}
+
+    // PHAsset
+    rpc FetchAssetsInCollection(FetchAssetsInCollectionRequest) returns (FetchAssetsInCollectionResponse) {}
+    rpc FetchAssets(FetchAssetsRequest) returns (FetchAssetsResponse) {}
+
+    // PHImageManager
+    rpc RequestImageForAsset(RequestImageForAssetRequest) returns (RequestImageForAssetResponse) {}
 }
 
 message TriggerRequest {
@@ -47,6 +55,40 @@ message FetchTopLevelUserCollectionsRequest {
 
 message FetchTopLevelUserCollectionsResponse {
     PHFetchResultPHCollection result = 1;
+}
+
+message FetchCollectionsInCollectionListRequest {
+    string collection_list_local_identifier = 1;
+    PHFetchOptions options = 2;
+}
+
+message FetchCollectionsInCollectionListResponse {
+    PHFetchResultPHCollection fetch_result = 1;
+}
+
+message FetchAssetsInCollectionRequest {
+    string collection_local_identifier = 1;
+    PHFetchOptions options = 2;
+}
+
+message FetchAssetsInCollectionResponse {
+    PHFetchResultPHAsset fetch_result = 1;
+}
+
+message FetchAssetsRequest {
+    PHFetchOptions options = 1;
+}
+
+message FetchAssetsResponse {
+    PHFetchResultPHAsset fetch_result = 1;
+}
+
+message RequestImageForAssetRequest {
+    string asset_local_identifier = 1;
+}
+
+message RequestImageForAssetResponse {
+    bytes image_data = 1;
 }
 
 // Photokit Types
@@ -147,9 +189,10 @@ message PHAssetCollection {
 
 enum PHAssetMediaType {
     PH_ASSET_MEDIA_TYPE_INVALID = 0;
-    PH_ASSET_MEDIA_TYPE_IMAGE = 1;
-    PH_ASSET_MEDIA_TYPE_VIDEO = 2;
-    PH_ASSET_MEDIA_TYPE_AUDIO = 3;
+    PH_ASSET_MEDIA_TYPE_UNKNOWN = 1;
+    PH_ASSET_MEDIA_TYPE_IMAGE = 2;
+    PH_ASSET_MEDIA_TYPE_VIDEO = 3;
+    PH_ASSET_MEDIA_TYPE_AUDIO = 4;
 }
 
 enum PHAssetPlaybackStyle {
@@ -175,10 +218,9 @@ message PHAsset {
     google.protobuf.Duration duration = 10;
     bool is_favorite = 11;
     bool is_hidden = 12;
-    bool is_sync_failure_hidden = 13;
-    PHAssetPlaybackStyle playback_style = 14;
-    string burst_identifier = 15;
-    // PHAssetBurstSelectionType burst_selection_types = 16;
+    PHAssetPlaybackStyle playback_style = 13;
+    string burst_identifier = 14;
+    // PHAssetBurstSelectionType burst_selection_types = 15;
     bool represents_burst = 16;
 }
 
@@ -196,4 +238,8 @@ message PHFetchResultPHCollection {
 message PHFetchOptions {
     bool include_all_burst_assets = 1;
     bool include_hidden_assets = 2;
+}
+
+message PHFetchResultPHAsset {
+    repeated PHAsset results = 1;
 }

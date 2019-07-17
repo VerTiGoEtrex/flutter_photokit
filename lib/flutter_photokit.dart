@@ -2,8 +2,11 @@ import 'dart:typed_data';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_photokit/proto/photokit.pb.dart';
 import 'package:flutter_photokit/proto/photokit.pbserver.dart';
 import 'package:protobuf/protobuf.dart';
+
+export 'package:flutter_photokit/proto/photokit.pb.dart';
 
 class FlutterPhotokit {
   final PhotoKitApi api =
@@ -26,13 +29,51 @@ class FlutterPhotokit {
     final response = await api.trigger(_ctx, TriggerRequest());
   }
 
-  Future<FetchTopLevelUserCollectionsResponse>
+  Future<List<AssetCollectionOrCollectionList>>
       fetchTopLevelUserCollections() async {
-    final x = await api.fetchTopLevelUserCollections(
+    final response = await api.fetchTopLevelUserCollections(
         _ctx,
         FetchTopLevelUserCollectionsRequest()
           ..fetchOptions = (PHFetchOptions()..includeHiddenAssets = true));
-    return x;
+    return response.result.results;
+  }
+
+  Future<List<AssetCollectionOrCollectionList>>
+      fetchCollectionsInCollectionList(final PHCollectionList collectionList,
+          {final PHFetchOptions fetchOptions}) async {
+    final request = FetchCollectionsInCollectionListRequest()
+      ..collectionListLocalIdentifier =
+          collectionList.base.base.localIdentifier;
+    if (fetchOptions != null) request.options = fetchOptions;
+    final response = await api.fetchCollectionsInCollectionList(
+      _ctx,
+      request,
+    );
+    return response.fetchResult.results;
+  }
+
+  Future<List<PHAsset>> fetchAssetsInCollection(
+      final PHAssetCollection assetCollection,
+      {final PHFetchOptions fetchOptions}) async {
+    final request = FetchAssetsInCollectionRequest()
+      ..collectionLocalIdentifier = assetCollection.base.base.localIdentifier;
+    if (fetchOptions != null) request.options = fetchOptions;
+    final response = await api.fetchAssetsInCollection(_ctx, request);
+    return response.fetchResult.results;
+  }
+
+  Future<List<PHAsset>> fetchAssets({final PHFetchOptions fetchOptions}) async {
+    final request = FetchAssetsRequest();
+    if (fetchOptions != null) request.options = fetchOptions;
+    final response = await api.fetchAssets(_ctx, request);
+    return response.fetchResult.results;
+  }
+
+  Future<Uint8List> requestImage(final PHAsset asset) async {
+    final request = RequestImageForAssetRequest()
+      ..assetLocalIdentifier = asset.base.localIdentifier;
+    final response = await api.requestImageForAsset(_ctx, request);
+    return response.imageData;
   }
 }
 

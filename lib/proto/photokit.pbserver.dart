@@ -20,6 +20,10 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetAuthorizationStatusResponse> getAuthorizationStatus($pb.ServerContext ctx, $2.GetAuthorizationStatusRequest request);
   $async.Future<$2.RequestAuthorizationResponse> requestAuthorization($pb.ServerContext ctx, $2.RequestAuthorizationRequest request);
   $async.Future<$2.FetchTopLevelUserCollectionsResponse> fetchTopLevelUserCollections($pb.ServerContext ctx, $2.FetchTopLevelUserCollectionsRequest request);
+  $async.Future<$2.FetchCollectionsInCollectionListResponse> fetchCollectionsInCollectionList($pb.ServerContext ctx, $2.FetchCollectionsInCollectionListRequest request);
+  $async.Future<$2.FetchAssetsInCollectionResponse> fetchAssetsInCollection($pb.ServerContext ctx, $2.FetchAssetsInCollectionRequest request);
+  $async.Future<$2.FetchAssetsResponse> fetchAssets($pb.ServerContext ctx, $2.FetchAssetsRequest request);
+  $async.Future<$2.RequestImageForAssetResponse> requestImageForAsset($pb.ServerContext ctx, $2.RequestImageForAssetRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -27,6 +31,10 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'GetAuthorizationStatus': return $2.GetAuthorizationStatusRequest();
       case 'RequestAuthorization': return $2.RequestAuthorizationRequest();
       case 'FetchTopLevelUserCollections': return $2.FetchTopLevelUserCollectionsRequest();
+      case 'FetchCollectionsInCollectionList': return $2.FetchCollectionsInCollectionListRequest();
+      case 'FetchAssetsInCollection': return $2.FetchAssetsInCollectionRequest();
+      case 'FetchAssets': return $2.FetchAssetsRequest();
+      case 'RequestImageForAsset': return $2.RequestImageForAssetRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -37,6 +45,10 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'GetAuthorizationStatus': return this.getAuthorizationStatus(ctx, request);
       case 'RequestAuthorization': return this.requestAuthorization(ctx, request);
       case 'FetchTopLevelUserCollections': return this.fetchTopLevelUserCollections(ctx, request);
+      case 'FetchCollectionsInCollectionList': return this.fetchCollectionsInCollectionList(ctx, request);
+      case 'FetchAssetsInCollection': return this.fetchAssetsInCollection(ctx, request);
+      case 'FetchAssets': return this.fetchAssets(ctx, request);
+      case 'RequestImageForAsset': return this.requestImageForAsset(ctx, request);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

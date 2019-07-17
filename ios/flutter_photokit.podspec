@@ -18,6 +18,6 @@ PhotoKit for Flutter
   s.dependency 'SwiftProtobuf', '~> 1.4'
   s.dependency 'PromiseKit', '~> 6.8'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 end
 

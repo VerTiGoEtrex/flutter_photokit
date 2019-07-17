@@ -202,6 +202,226 @@ class FetchTopLevelUserCollectionsResponse extends $pb.GeneratedMessage {
   void clearResult() => clearField(1);
 }
 
+class FetchCollectionsInCollectionListRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchCollectionsInCollectionListRequest', package: const $pb.PackageName('flutter_photokit'))
+    ..aOS(1, 'collectionListLocalIdentifier')
+    ..a<PHFetchOptions>(2, 'options', $pb.PbFieldType.OM, PHFetchOptions.getDefault, PHFetchOptions.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchCollectionsInCollectionListRequest._() : super();
+  factory FetchCollectionsInCollectionListRequest() => create();
+  factory FetchCollectionsInCollectionListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchCollectionsInCollectionListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchCollectionsInCollectionListRequest clone() => FetchCollectionsInCollectionListRequest()..mergeFromMessage(this);
+  FetchCollectionsInCollectionListRequest copyWith(void Function(FetchCollectionsInCollectionListRequest) updates) => super.copyWith((message) => updates(message as FetchCollectionsInCollectionListRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchCollectionsInCollectionListRequest create() => FetchCollectionsInCollectionListRequest._();
+  FetchCollectionsInCollectionListRequest createEmptyInstance() => create();
+  static $pb.PbList<FetchCollectionsInCollectionListRequest> createRepeated() => $pb.PbList<FetchCollectionsInCollectionListRequest>();
+  static FetchCollectionsInCollectionListRequest getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchCollectionsInCollectionListRequest _defaultInstance;
+
+  $core.String get collectionListLocalIdentifier => $_getS(0, '');
+  set collectionListLocalIdentifier($core.String v) { $_setString(0, v); }
+  $core.bool hasCollectionListLocalIdentifier() => $_has(0);
+  void clearCollectionListLocalIdentifier() => clearField(1);
+
+  PHFetchOptions get options => $_getN(1);
+  set options(PHFetchOptions v) { setField(2, v); }
+  $core.bool hasOptions() => $_has(1);
+  void clearOptions() => clearField(2);
+}
+
+class FetchCollectionsInCollectionListResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchCollectionsInCollectionListResponse', package: const $pb.PackageName('flutter_photokit'))
+    ..a<PHFetchResultPHCollection>(1, 'fetchResult', $pb.PbFieldType.OM, PHFetchResultPHCollection.getDefault, PHFetchResultPHCollection.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchCollectionsInCollectionListResponse._() : super();
+  factory FetchCollectionsInCollectionListResponse() => create();
+  factory FetchCollectionsInCollectionListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchCollectionsInCollectionListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchCollectionsInCollectionListResponse clone() => FetchCollectionsInCollectionListResponse()..mergeFromMessage(this);
+  FetchCollectionsInCollectionListResponse copyWith(void Function(FetchCollectionsInCollectionListResponse) updates) => super.copyWith((message) => updates(message as FetchCollectionsInCollectionListResponse));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchCollectionsInCollectionListResponse create() => FetchCollectionsInCollectionListResponse._();
+  FetchCollectionsInCollectionListResponse createEmptyInstance() => create();
+  static $pb.PbList<FetchCollectionsInCollectionListResponse> createRepeated() => $pb.PbList<FetchCollectionsInCollectionListResponse>();
+  static FetchCollectionsInCollectionListResponse getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchCollectionsInCollectionListResponse _defaultInstance;
+
+  PHFetchResultPHCollection get fetchResult => $_getN(0);
+  set fetchResult(PHFetchResultPHCollection v) { setField(1, v); }
+  $core.bool hasFetchResult() => $_has(0);
+  void clearFetchResult() => clearField(1);
+}
+
+class FetchAssetsInCollectionRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchAssetsInCollectionRequest', package: const $pb.PackageName('flutter_photokit'))
+    ..aOS(1, 'collectionLocalIdentifier')
+    ..a<PHFetchOptions>(2, 'options', $pb.PbFieldType.OM, PHFetchOptions.getDefault, PHFetchOptions.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchAssetsInCollectionRequest._() : super();
+  factory FetchAssetsInCollectionRequest() => create();
+  factory FetchAssetsInCollectionRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchAssetsInCollectionRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchAssetsInCollectionRequest clone() => FetchAssetsInCollectionRequest()..mergeFromMessage(this);
+  FetchAssetsInCollectionRequest copyWith(void Function(FetchAssetsInCollectionRequest) updates) => super.copyWith((message) => updates(message as FetchAssetsInCollectionRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchAssetsInCollectionRequest create() => FetchAssetsInCollectionRequest._();
+  FetchAssetsInCollectionRequest createEmptyInstance() => create();
+  static $pb.PbList<FetchAssetsInCollectionRequest> createRepeated() => $pb.PbList<FetchAssetsInCollectionRequest>();
+  static FetchAssetsInCollectionRequest getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchAssetsInCollectionRequest _defaultInstance;
+
+  $core.String get collectionLocalIdentifier => $_getS(0, '');
+  set collectionLocalIdentifier($core.String v) { $_setString(0, v); }
+  $core.bool hasCollectionLocalIdentifier() => $_has(0);
+  void clearCollectionLocalIdentifier() => clearField(1);
+
+  PHFetchOptions get options => $_getN(1);
+  set options(PHFetchOptions v) { setField(2, v); }
+  $core.bool hasOptions() => $_has(1);
+  void clearOptions() => clearField(2);
+}
+
+class FetchAssetsInCollectionResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchAssetsInCollectionResponse', package: const $pb.PackageName('flutter_photokit'))
+    ..a<PHFetchResultPHAsset>(1, 'fetchResult', $pb.PbFieldType.OM, PHFetchResultPHAsset.getDefault, PHFetchResultPHAsset.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchAssetsInCollectionResponse._() : super();
+  factory FetchAssetsInCollectionResponse() => create();
+  factory FetchAssetsInCollectionResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchAssetsInCollectionResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchAssetsInCollectionResponse clone() => FetchAssetsInCollectionResponse()..mergeFromMessage(this);
+  FetchAssetsInCollectionResponse copyWith(void Function(FetchAssetsInCollectionResponse) updates) => super.copyWith((message) => updates(message as FetchAssetsInCollectionResponse));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchAssetsInCollectionResponse create() => FetchAssetsInCollectionResponse._();
+  FetchAssetsInCollectionResponse createEmptyInstance() => create();
+  static $pb.PbList<FetchAssetsInCollectionResponse> createRepeated() => $pb.PbList<FetchAssetsInCollectionResponse>();
+  static FetchAssetsInCollectionResponse getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchAssetsInCollectionResponse _defaultInstance;
+
+  PHFetchResultPHAsset get fetchResult => $_getN(0);
+  set fetchResult(PHFetchResultPHAsset v) { setField(1, v); }
+  $core.bool hasFetchResult() => $_has(0);
+  void clearFetchResult() => clearField(1);
+}
+
+class FetchAssetsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchAssetsRequest', package: const $pb.PackageName('flutter_photokit'))
+    ..a<PHFetchOptions>(1, 'options', $pb.PbFieldType.OM, PHFetchOptions.getDefault, PHFetchOptions.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchAssetsRequest._() : super();
+  factory FetchAssetsRequest() => create();
+  factory FetchAssetsRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchAssetsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchAssetsRequest clone() => FetchAssetsRequest()..mergeFromMessage(this);
+  FetchAssetsRequest copyWith(void Function(FetchAssetsRequest) updates) => super.copyWith((message) => updates(message as FetchAssetsRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchAssetsRequest create() => FetchAssetsRequest._();
+  FetchAssetsRequest createEmptyInstance() => create();
+  static $pb.PbList<FetchAssetsRequest> createRepeated() => $pb.PbList<FetchAssetsRequest>();
+  static FetchAssetsRequest getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchAssetsRequest _defaultInstance;
+
+  PHFetchOptions get options => $_getN(0);
+  set options(PHFetchOptions v) { setField(1, v); }
+  $core.bool hasOptions() => $_has(0);
+  void clearOptions() => clearField(1);
+}
+
+class FetchAssetsResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FetchAssetsResponse', package: const $pb.PackageName('flutter_photokit'))
+    ..a<PHFetchResultPHAsset>(1, 'fetchResult', $pb.PbFieldType.OM, PHFetchResultPHAsset.getDefault, PHFetchResultPHAsset.create)
+    ..hasRequiredFields = false
+  ;
+
+  FetchAssetsResponse._() : super();
+  factory FetchAssetsResponse() => create();
+  factory FetchAssetsResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchAssetsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchAssetsResponse clone() => FetchAssetsResponse()..mergeFromMessage(this);
+  FetchAssetsResponse copyWith(void Function(FetchAssetsResponse) updates) => super.copyWith((message) => updates(message as FetchAssetsResponse));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FetchAssetsResponse create() => FetchAssetsResponse._();
+  FetchAssetsResponse createEmptyInstance() => create();
+  static $pb.PbList<FetchAssetsResponse> createRepeated() => $pb.PbList<FetchAssetsResponse>();
+  static FetchAssetsResponse getDefault() => _defaultInstance ??= create()..freeze();
+  static FetchAssetsResponse _defaultInstance;
+
+  PHFetchResultPHAsset get fetchResult => $_getN(0);
+  set fetchResult(PHFetchResultPHAsset v) { setField(1, v); }
+  $core.bool hasFetchResult() => $_has(0);
+  void clearFetchResult() => clearField(1);
+}
+
+class RequestImageForAssetRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('RequestImageForAssetRequest', package: const $pb.PackageName('flutter_photokit'))
+    ..aOS(1, 'assetLocalIdentifier')
+    ..hasRequiredFields = false
+  ;
+
+  RequestImageForAssetRequest._() : super();
+  factory RequestImageForAssetRequest() => create();
+  factory RequestImageForAssetRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RequestImageForAssetRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  RequestImageForAssetRequest clone() => RequestImageForAssetRequest()..mergeFromMessage(this);
+  RequestImageForAssetRequest copyWith(void Function(RequestImageForAssetRequest) updates) => super.copyWith((message) => updates(message as RequestImageForAssetRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RequestImageForAssetRequest create() => RequestImageForAssetRequest._();
+  RequestImageForAssetRequest createEmptyInstance() => create();
+  static $pb.PbList<RequestImageForAssetRequest> createRepeated() => $pb.PbList<RequestImageForAssetRequest>();
+  static RequestImageForAssetRequest getDefault() => _defaultInstance ??= create()..freeze();
+  static RequestImageForAssetRequest _defaultInstance;
+
+  $core.String get assetLocalIdentifier => $_getS(0, '');
+  set assetLocalIdentifier($core.String v) { $_setString(0, v); }
+  $core.bool hasAssetLocalIdentifier() => $_has(0);
+  void clearAssetLocalIdentifier() => clearField(1);
+}
+
+class RequestImageForAssetResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('RequestImageForAssetResponse', package: const $pb.PackageName('flutter_photokit'))
+    ..a<$core.List<$core.int>>(1, 'imageData', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
+  RequestImageForAssetResponse._() : super();
+  factory RequestImageForAssetResponse() => create();
+  factory RequestImageForAssetResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RequestImageForAssetResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  RequestImageForAssetResponse clone() => RequestImageForAssetResponse()..mergeFromMessage(this);
+  RequestImageForAssetResponse copyWith(void Function(RequestImageForAssetResponse) updates) => super.copyWith((message) => updates(message as RequestImageForAssetResponse));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RequestImageForAssetResponse create() => RequestImageForAssetResponse._();
+  RequestImageForAssetResponse createEmptyInstance() => create();
+  static $pb.PbList<RequestImageForAssetResponse> createRepeated() => $pb.PbList<RequestImageForAssetResponse>();
+  static RequestImageForAssetResponse getDefault() => _defaultInstance ??= create()..freeze();
+  static RequestImageForAssetResponse _defaultInstance;
+
+  $core.List<$core.int> get imageData => $_getN(0);
+  set imageData($core.List<$core.int> v) { $_setBytes(0, v); }
+  $core.bool hasImageData() => $_has(0);
+  void clearImageData() => clearField(1);
+}
+
 class PHObject extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('PHObject', package: const $pb.PackageName('flutter_photokit'))
     ..aOS(1, 'localIdentifier')
@@ -422,9 +642,8 @@ class PHAsset extends $pb.GeneratedMessage {
     ..a<$1.Duration>(10, 'duration', $pb.PbFieldType.OM, $1.Duration.getDefault, $1.Duration.create)
     ..aOB(11, 'isFavorite')
     ..aOB(12, 'isHidden')
-    ..aOB(13, 'isSyncFailureHidden')
-    ..e<PHAssetPlaybackStyle>(14, 'playbackStyle', $pb.PbFieldType.OE, PHAssetPlaybackStyle.PH_ASSET_PLAYBACK_STYLE_INVALID, PHAssetPlaybackStyle.valueOf, PHAssetPlaybackStyle.values)
-    ..aOS(15, 'burstIdentifier')
+    ..e<PHAssetPlaybackStyle>(13, 'playbackStyle', $pb.PbFieldType.OE, PHAssetPlaybackStyle.PH_ASSET_PLAYBACK_STYLE_INVALID, PHAssetPlaybackStyle.valueOf, PHAssetPlaybackStyle.values)
+    ..aOS(14, 'burstIdentifier')
     ..aOB(16, 'representsBurst')
     ..hasRequiredFields = false
   ;
@@ -493,24 +712,19 @@ class PHAsset extends $pb.GeneratedMessage {
   $core.bool hasIsHidden() => $_has(9);
   void clearIsHidden() => clearField(12);
 
-  $core.bool get isSyncFailureHidden => $_get(10, false);
-  set isSyncFailureHidden($core.bool v) { $_setBool(10, v); }
-  $core.bool hasIsSyncFailureHidden() => $_has(10);
-  void clearIsSyncFailureHidden() => clearField(13);
+  PHAssetPlaybackStyle get playbackStyle => $_getN(10);
+  set playbackStyle(PHAssetPlaybackStyle v) { setField(13, v); }
+  $core.bool hasPlaybackStyle() => $_has(10);
+  void clearPlaybackStyle() => clearField(13);
 
-  PHAssetPlaybackStyle get playbackStyle => $_getN(11);
-  set playbackStyle(PHAssetPlaybackStyle v) { setField(14, v); }
-  $core.bool hasPlaybackStyle() => $_has(11);
-  void clearPlaybackStyle() => clearField(14);
+  $core.String get burstIdentifier => $_getS(11, '');
+  set burstIdentifier($core.String v) { $_setString(11, v); }
+  $core.bool hasBurstIdentifier() => $_has(11);
+  void clearBurstIdentifier() => clearField(14);
 
-  $core.String get burstIdentifier => $_getS(12, '');
-  set burstIdentifier($core.String v) { $_setString(12, v); }
-  $core.bool hasBurstIdentifier() => $_has(12);
-  void clearBurstIdentifier() => clearField(15);
-
-  $core.bool get representsBurst => $_get(13, false);
-  set representsBurst($core.bool v) { $_setBool(13, v); }
-  $core.bool hasRepresentsBurst() => $_has(13);
+  $core.bool get representsBurst => $_get(12, false);
+  set representsBurst($core.bool v) { $_setBool(12, v); }
+  $core.bool hasRepresentsBurst() => $_has(12);
   void clearRepresentsBurst() => clearField(16);
 }
 
@@ -616,6 +830,29 @@ class PHFetchOptions extends $pb.GeneratedMessage {
   void clearIncludeHiddenAssets() => clearField(2);
 }
 
+class PHFetchResultPHAsset extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('PHFetchResultPHAsset', package: const $pb.PackageName('flutter_photokit'))
+    ..pc<PHAsset>(1, 'results', $pb.PbFieldType.PM,PHAsset.create)
+    ..hasRequiredFields = false
+  ;
+
+  PHFetchResultPHAsset._() : super();
+  factory PHFetchResultPHAsset() => create();
+  factory PHFetchResultPHAsset.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PHFetchResultPHAsset.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  PHFetchResultPHAsset clone() => PHFetchResultPHAsset()..mergeFromMessage(this);
+  PHFetchResultPHAsset copyWith(void Function(PHFetchResultPHAsset) updates) => super.copyWith((message) => updates(message as PHFetchResultPHAsset));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PHFetchResultPHAsset create() => PHFetchResultPHAsset._();
+  PHFetchResultPHAsset createEmptyInstance() => create();
+  static $pb.PbList<PHFetchResultPHAsset> createRepeated() => $pb.PbList<PHFetchResultPHAsset>();
+  static PHFetchResultPHAsset getDefault() => _defaultInstance ??= create()..freeze();
+  static PHFetchResultPHAsset _defaultInstance;
+
+  $core.List<PHAsset> get results => $_getList(0);
+}
+
 class PhotoKitApi {
   $pb.RpcClient _client;
   PhotoKitApi(this._client);
@@ -635,6 +872,22 @@ class PhotoKitApi {
   $async.Future<FetchTopLevelUserCollectionsResponse> fetchTopLevelUserCollections($pb.ClientContext ctx, FetchTopLevelUserCollectionsRequest request) {
     var emptyResponse = FetchTopLevelUserCollectionsResponse();
     return _client.invoke<FetchTopLevelUserCollectionsResponse>(ctx, 'PhotoKit', 'FetchTopLevelUserCollections', request, emptyResponse);
+  }
+  $async.Future<FetchCollectionsInCollectionListResponse> fetchCollectionsInCollectionList($pb.ClientContext ctx, FetchCollectionsInCollectionListRequest request) {
+    var emptyResponse = FetchCollectionsInCollectionListResponse();
+    return _client.invoke<FetchCollectionsInCollectionListResponse>(ctx, 'PhotoKit', 'FetchCollectionsInCollectionList', request, emptyResponse);
+  }
+  $async.Future<FetchAssetsInCollectionResponse> fetchAssetsInCollection($pb.ClientContext ctx, FetchAssetsInCollectionRequest request) {
+    var emptyResponse = FetchAssetsInCollectionResponse();
+    return _client.invoke<FetchAssetsInCollectionResponse>(ctx, 'PhotoKit', 'FetchAssetsInCollection', request, emptyResponse);
+  }
+  $async.Future<FetchAssetsResponse> fetchAssets($pb.ClientContext ctx, FetchAssetsRequest request) {
+    var emptyResponse = FetchAssetsResponse();
+    return _client.invoke<FetchAssetsResponse>(ctx, 'PhotoKit', 'FetchAssets', request, emptyResponse);
+  }
+  $async.Future<RequestImageForAssetResponse> requestImageForAsset($pb.ClientContext ctx, RequestImageForAssetRequest request) {
+    var emptyResponse = RequestImageForAssetResponse();
+    return _client.invoke<RequestImageForAssetResponse>(ctx, 'PhotoKit', 'RequestImageForAsset', request, emptyResponse);
   }
 }
 

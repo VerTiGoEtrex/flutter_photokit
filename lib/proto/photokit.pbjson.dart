@@ -6,6 +6,7 @@
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 import 'google/protobuf/timestamp.pbjson.dart' as $0;
+import 'google/protobuf/duration.pbjson.dart' as $1;
 
 const AuthorizationStatus$json = const {
   '1': 'AuthorizationStatus',
@@ -86,9 +87,10 @@ const PHAssetMediaType$json = const {
   '1': 'PHAssetMediaType',
   '2': const [
     const {'1': 'PH_ASSET_MEDIA_TYPE_INVALID', '2': 0},
-    const {'1': 'PH_ASSET_MEDIA_TYPE_IMAGE', '2': 1},
-    const {'1': 'PH_ASSET_MEDIA_TYPE_VIDEO', '2': 2},
-    const {'1': 'PH_ASSET_MEDIA_TYPE_AUDIO', '2': 3},
+    const {'1': 'PH_ASSET_MEDIA_TYPE_UNKNOWN', '2': 1},
+    const {'1': 'PH_ASSET_MEDIA_TYPE_IMAGE', '2': 2},
+    const {'1': 'PH_ASSET_MEDIA_TYPE_VIDEO', '2': 3},
+    const {'1': 'PH_ASSET_MEDIA_TYPE_AUDIO', '2': 4},
   ],
 };
 
@@ -146,6 +148,64 @@ const FetchTopLevelUserCollectionsResponse$json = const {
   '1': 'FetchTopLevelUserCollectionsResponse',
   '2': const [
     const {'1': 'result', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchResultPHCollection', '10': 'result'},
+  ],
+};
+
+const FetchCollectionsInCollectionListRequest$json = const {
+  '1': 'FetchCollectionsInCollectionListRequest',
+  '2': const [
+    const {'1': 'collection_list_local_identifier', '3': 1, '4': 1, '5': 9, '10': 'collectionListLocalIdentifier'},
+    const {'1': 'options', '3': 2, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchOptions', '10': 'options'},
+  ],
+};
+
+const FetchCollectionsInCollectionListResponse$json = const {
+  '1': 'FetchCollectionsInCollectionListResponse',
+  '2': const [
+    const {'1': 'fetch_result', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchResultPHCollection', '10': 'fetchResult'},
+  ],
+};
+
+const FetchAssetsInCollectionRequest$json = const {
+  '1': 'FetchAssetsInCollectionRequest',
+  '2': const [
+    const {'1': 'collection_local_identifier', '3': 1, '4': 1, '5': 9, '10': 'collectionLocalIdentifier'},
+    const {'1': 'options', '3': 2, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchOptions', '10': 'options'},
+  ],
+};
+
+const FetchAssetsInCollectionResponse$json = const {
+  '1': 'FetchAssetsInCollectionResponse',
+  '2': const [
+    const {'1': 'fetch_result', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchResultPHAsset', '10': 'fetchResult'},
+  ],
+};
+
+const FetchAssetsRequest$json = const {
+  '1': 'FetchAssetsRequest',
+  '2': const [
+    const {'1': 'options', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchOptions', '10': 'options'},
+  ],
+};
+
+const FetchAssetsResponse$json = const {
+  '1': 'FetchAssetsResponse',
+  '2': const [
+    const {'1': 'fetch_result', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.PHFetchResultPHAsset', '10': 'fetchResult'},
+  ],
+};
+
+const RequestImageForAssetRequest$json = const {
+  '1': 'RequestImageForAssetRequest',
+  '2': const [
+    const {'1': 'asset_local_identifier', '3': 1, '4': 1, '5': 9, '10': 'assetLocalIdentifier'},
+  ],
+};
+
+const RequestImageForAssetResponse$json = const {
+  '1': 'RequestImageForAssetResponse',
+  '2': const [
+    const {'1': 'image_data', '3': 1, '4': 1, '5': 12, '10': 'imageData'},
   ],
 };
 
@@ -209,9 +269,8 @@ const PHAsset$json = const {
     const {'1': 'duration', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Duration', '10': 'duration'},
     const {'1': 'is_favorite', '3': 11, '4': 1, '5': 8, '10': 'isFavorite'},
     const {'1': 'is_hidden', '3': 12, '4': 1, '5': 8, '10': 'isHidden'},
-    const {'1': 'is_sync_failure_hidden', '3': 13, '4': 1, '5': 8, '10': 'isSyncFailureHidden'},
-    const {'1': 'playback_style', '3': 14, '4': 1, '5': 14, '6': '.flutter_photokit.PHAssetPlaybackStyle', '10': 'playbackStyle'},
-    const {'1': 'burst_identifier', '3': 15, '4': 1, '5': 9, '10': 'burstIdentifier'},
+    const {'1': 'playback_style', '3': 13, '4': 1, '5': 14, '6': '.flutter_photokit.PHAssetPlaybackStyle', '10': 'playbackStyle'},
+    const {'1': 'burst_identifier', '3': 14, '4': 1, '5': 9, '10': 'burstIdentifier'},
     const {'1': 'represents_burst', '3': 16, '4': 1, '5': 8, '10': 'representsBurst'},
   ],
 };
@@ -242,6 +301,13 @@ const PHFetchOptions$json = const {
   ],
 };
 
+const PHFetchResultPHAsset$json = const {
+  '1': 'PHFetchResultPHAsset',
+  '2': const [
+    const {'1': 'results', '3': 1, '4': 3, '5': 11, '6': '.flutter_photokit.PHAsset', '10': 'results'},
+  ],
+};
+
 const PhotoKitServiceBase$json = const {
   '1': 'PhotoKit',
   '2': const [
@@ -249,6 +315,10 @@ const PhotoKitServiceBase$json = const {
     const {'1': 'GetAuthorizationStatus', '2': '.flutter_photokit.GetAuthorizationStatusRequest', '3': '.flutter_photokit.GetAuthorizationStatusResponse', '4': const {}},
     const {'1': 'RequestAuthorization', '2': '.flutter_photokit.RequestAuthorizationRequest', '3': '.flutter_photokit.RequestAuthorizationResponse', '4': const {}},
     const {'1': 'FetchTopLevelUserCollections', '2': '.flutter_photokit.FetchTopLevelUserCollectionsRequest', '3': '.flutter_photokit.FetchTopLevelUserCollectionsResponse', '4': const {}},
+    const {'1': 'FetchCollectionsInCollectionList', '2': '.flutter_photokit.FetchCollectionsInCollectionListRequest', '3': '.flutter_photokit.FetchCollectionsInCollectionListResponse', '4': const {}},
+    const {'1': 'FetchAssetsInCollection', '2': '.flutter_photokit.FetchAssetsInCollectionRequest', '3': '.flutter_photokit.FetchAssetsInCollectionResponse', '4': const {}},
+    const {'1': 'FetchAssets', '2': '.flutter_photokit.FetchAssetsRequest', '3': '.flutter_photokit.FetchAssetsResponse', '4': const {}},
+    const {'1': 'RequestImageForAsset', '2': '.flutter_photokit.RequestImageForAssetRequest', '3': '.flutter_photokit.RequestImageForAssetResponse', '4': const {}},
   ],
 };
 
@@ -270,5 +340,16 @@ const PhotoKitServiceBase$messageJson = const {
   '.google.protobuf.Timestamp': $0.Timestamp$json,
   '.flutter_photokit.PHAssetCollection': PHAssetCollection$json,
   '.flutter_photokit.CLLocation': CLLocation$json,
+  '.flutter_photokit.FetchCollectionsInCollectionListRequest': FetchCollectionsInCollectionListRequest$json,
+  '.flutter_photokit.FetchCollectionsInCollectionListResponse': FetchCollectionsInCollectionListResponse$json,
+  '.flutter_photokit.FetchAssetsInCollectionRequest': FetchAssetsInCollectionRequest$json,
+  '.flutter_photokit.FetchAssetsInCollectionResponse': FetchAssetsInCollectionResponse$json,
+  '.flutter_photokit.PHFetchResultPHAsset': PHFetchResultPHAsset$json,
+  '.flutter_photokit.PHAsset': PHAsset$json,
+  '.google.protobuf.Duration': $1.Duration$json,
+  '.flutter_photokit.FetchAssetsRequest': FetchAssetsRequest$json,
+  '.flutter_photokit.FetchAssetsResponse': FetchAssetsResponse$json,
+  '.flutter_photokit.RequestImageForAssetRequest': RequestImageForAssetRequest$json,
+  '.flutter_photokit.RequestImageForAssetResponse': RequestImageForAssetResponse$json,
 };
 

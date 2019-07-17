@@ -156,12 +156,14 @@ class PHAssetCollectionSubtype extends $pb.ProtobufEnum {
 
 class PHAssetMediaType extends $pb.ProtobufEnum {
   static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_INVALID = PHAssetMediaType._(0, 'PH_ASSET_MEDIA_TYPE_INVALID');
-  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_IMAGE = PHAssetMediaType._(1, 'PH_ASSET_MEDIA_TYPE_IMAGE');
-  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_VIDEO = PHAssetMediaType._(2, 'PH_ASSET_MEDIA_TYPE_VIDEO');
-  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_AUDIO = PHAssetMediaType._(3, 'PH_ASSET_MEDIA_TYPE_AUDIO');
+  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_UNKNOWN = PHAssetMediaType._(1, 'PH_ASSET_MEDIA_TYPE_UNKNOWN');
+  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_IMAGE = PHAssetMediaType._(2, 'PH_ASSET_MEDIA_TYPE_IMAGE');
+  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_VIDEO = PHAssetMediaType._(3, 'PH_ASSET_MEDIA_TYPE_VIDEO');
+  static const PHAssetMediaType PH_ASSET_MEDIA_TYPE_AUDIO = PHAssetMediaType._(4, 'PH_ASSET_MEDIA_TYPE_AUDIO');
 
   static const $core.List<PHAssetMediaType> values = <PHAssetMediaType> [
     PH_ASSET_MEDIA_TYPE_INVALID,
+    PH_ASSET_MEDIA_TYPE_UNKNOWN,
     PH_ASSET_MEDIA_TYPE_IMAGE,
     PH_ASSET_MEDIA_TYPE_VIDEO,
     PH_ASSET_MEDIA_TYPE_AUDIO,
