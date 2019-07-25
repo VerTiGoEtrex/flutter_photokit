@@ -200,3 +200,38 @@ class PHAssetPlaybackStyle extends $pb.ProtobufEnum {
   const PHAssetPlaybackStyle._($core.int v, $core.String n) : super(v, n);
 }
 
+class PHAssetResourceType extends $pb.ProtobufEnum {
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_INVALID = PHAssetResourceType._(0, 'PH_ASSET_RESOURCE_TYPE_INVALID');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_PHOTO = PHAssetResourceType._(1, 'PH_ASSET_RESOURCE_TYPE_PHOTO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_VIDEO = PHAssetResourceType._(2, 'PH_ASSET_RESOURCE_TYPE_VIDEO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_AUDIO = PHAssetResourceType._(3, 'PH_ASSET_RESOURCE_TYPE_AUDIO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO = PHAssetResourceType._(4, 'PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO = PHAssetResourceType._(5, 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO = PHAssetResourceType._(6, 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA = PHAssetResourceType._(7, 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO = PHAssetResourceType._(8, 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO = PHAssetResourceType._(9, 'PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO = PHAssetResourceType._(10, 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO = PHAssetResourceType._(11, 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO');
+
+  static const $core.List<PHAssetResourceType> values = <PHAssetResourceType> [
+    PH_ASSET_RESOURCE_TYPE_INVALID,
+    PH_ASSET_RESOURCE_TYPE_PHOTO,
+    PH_ASSET_RESOURCE_TYPE_VIDEO,
+    PH_ASSET_RESOURCE_TYPE_AUDIO,
+    PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO,
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO,
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO,
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA,
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO,
+    PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO,
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO,
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO,
+  ];
+
+  static final $core.Map<$core.int, PHAssetResourceType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static PHAssetResourceType valueOf($core.int value) => _byValue[value];
+
+  const PHAssetResourceType._($core.int v, $core.String n) : super(v, n);
+}
+

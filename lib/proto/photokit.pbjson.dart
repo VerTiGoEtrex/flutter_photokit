@@ -107,6 +107,24 @@ const PHAssetPlaybackStyle$json = const {
   ],
 };
 
+const PHAssetResourceType$json = const {
+  '1': 'PHAssetResourceType',
+  '2': const [
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_INVALID', '2': 0},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_PHOTO', '2': 1},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_VIDEO', '2': 2},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_AUDIO', '2': 3},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO', '2': 4},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO', '2': 5},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO', '2': 6},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA', '2': 7},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO', '2': 8},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO', '2': 9},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO', '2': 10},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO', '2': 11},
+  ],
+};
+
 const TriggerRequest$json = const {
   '1': 'TriggerRequest',
 };
@@ -209,6 +227,76 @@ const RequestImageForAssetResponse$json = const {
   ],
 };
 
+const RequestMetadataForAssetRequest$json = const {
+  '1': 'RequestMetadataForAssetRequest',
+  '2': const [
+    const {'1': 'asset_local_identifier', '3': 1, '4': 1, '5': 9, '10': 'assetLocalIdentifier'},
+  ],
+};
+
+const RequestMetadataForAssetResponse$json = const {
+  '1': 'RequestMetadataForAssetResponse',
+  '2': const [
+    const {'1': 'root', '3': 1, '4': 1, '5': 11, '6': '.flutter_photokit.MetadataNode', '10': 'root'},
+  ],
+};
+
+const AssetResourcesForAssetRequest$json = const {
+  '1': 'AssetResourcesForAssetRequest',
+  '2': const [
+    const {'1': 'asset_local_identifier', '3': 1, '4': 1, '5': 9, '10': 'assetLocalIdentifier'},
+  ],
+};
+
+const AssetResourcesForAssetResponse$json = const {
+  '1': 'AssetResourcesForAssetResponse',
+  '2': const [
+    const {'1': 'resources', '3': 1, '4': 3, '5': 11, '6': '.flutter_photokit.PHAssetResource', '10': 'resources'},
+  ],
+};
+
+const MetadataNode$json = const {
+  '1': 'MetadataNode',
+  '2': const [
+    const {'1': 'children', '3': 1, '4': 3, '5': 11, '6': '.flutter_photokit.MetadataNode.ChildrenEntry', '10': 'children'},
+    const {'1': 'leafs', '3': 2, '4': 3, '5': 11, '6': '.flutter_photokit.MetadataNode.LeafsEntry', '10': 'leafs'},
+  ],
+  '3': const [MetadataNode_ChildrenEntry$json, MetadataNode_LeafsEntry$json],
+};
+
+const MetadataNode_ChildrenEntry$json = const {
+  '1': 'ChildrenEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.flutter_photokit.MetadataNode', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+const MetadataNode_LeafsEntry$json = const {
+  '1': 'LeafsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.flutter_photokit.MetadataLeaf', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+const MetadataLeaf$json = const {
+  '1': 'MetadataLeaf',
+  '2': const [
+    const {'1': 'unknown', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'unknown'},
+    const {'1': 'string_value', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'stringValue'},
+    const {'1': 'float_value', '3': 3, '4': 1, '5': 2, '9': 0, '10': 'floatValue'},
+    const {'1': 'double_value', '3': 4, '4': 1, '5': 1, '9': 0, '10': 'doubleValue'},
+    const {'1': 'int32_value', '3': 5, '4': 1, '5': 5, '9': 0, '10': 'int32Value'},
+    const {'1': 'int64_value', '3': 6, '4': 1, '5': 3, '9': 0, '10': 'int64Value'},
+  ],
+  '8': const [
+    const {'1': 'data'},
+  ],
+};
+
 const PHObject$json = const {
   '1': 'PHObject',
   '2': const [
@@ -308,6 +396,16 @@ const PHFetchResultPHAsset$json = const {
   ],
 };
 
+const PHAssetResource$json = const {
+  '1': 'PHAssetResource',
+  '2': const [
+    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.flutter_photokit.PHAssetResourceType', '10': 'type'},
+    const {'1': 'assetLocalIdentifier', '3': 2, '4': 1, '5': 9, '10': 'assetLocalIdentifier'},
+    const {'1': 'uniformTypeIdentifier', '3': 3, '4': 1, '5': 9, '10': 'uniformTypeIdentifier'},
+    const {'1': 'originalFilename', '3': 4, '4': 1, '5': 9, '10': 'originalFilename'},
+  ],
+};
+
 const PhotoKitServiceBase$json = const {
   '1': 'PhotoKit',
   '2': const [
@@ -319,6 +417,8 @@ const PhotoKitServiceBase$json = const {
     const {'1': 'FetchAssetsInCollection', '2': '.flutter_photokit.FetchAssetsInCollectionRequest', '3': '.flutter_photokit.FetchAssetsInCollectionResponse', '4': const {}},
     const {'1': 'FetchAssets', '2': '.flutter_photokit.FetchAssetsRequest', '3': '.flutter_photokit.FetchAssetsResponse', '4': const {}},
     const {'1': 'RequestImageForAsset', '2': '.flutter_photokit.RequestImageForAssetRequest', '3': '.flutter_photokit.RequestImageForAssetResponse', '4': const {}},
+    const {'1': 'RequestMetadataForAsset', '2': '.flutter_photokit.RequestMetadataForAssetRequest', '3': '.flutter_photokit.RequestMetadataForAssetResponse', '4': const {}},
+    const {'1': 'AssetResourcesForAsset', '2': '.flutter_photokit.AssetResourcesForAssetRequest', '3': '.flutter_photokit.AssetResourcesForAssetResponse', '4': const {}},
   ],
 };
 
@@ -351,5 +451,14 @@ const PhotoKitServiceBase$messageJson = const {
   '.flutter_photokit.FetchAssetsResponse': FetchAssetsResponse$json,
   '.flutter_photokit.RequestImageForAssetRequest': RequestImageForAssetRequest$json,
   '.flutter_photokit.RequestImageForAssetResponse': RequestImageForAssetResponse$json,
+  '.flutter_photokit.RequestMetadataForAssetRequest': RequestMetadataForAssetRequest$json,
+  '.flutter_photokit.RequestMetadataForAssetResponse': RequestMetadataForAssetResponse$json,
+  '.flutter_photokit.MetadataNode': MetadataNode$json,
+  '.flutter_photokit.MetadataNode.ChildrenEntry': MetadataNode_ChildrenEntry$json,
+  '.flutter_photokit.MetadataNode.LeafsEntry': MetadataNode_LeafsEntry$json,
+  '.flutter_photokit.MetadataLeaf': MetadataLeaf$json,
+  '.flutter_photokit.AssetResourcesForAssetRequest': AssetResourcesForAssetRequest$json,
+  '.flutter_photokit.AssetResourcesForAssetResponse': AssetResourcesForAssetResponse$json,
+  '.flutter_photokit.PHAssetResource': PHAssetResource$json,
 };
 

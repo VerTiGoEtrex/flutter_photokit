@@ -472,6 +472,86 @@ extension FlutterPhotokit_PHAssetPlaybackStyle: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+enum FlutterPhotokit_PHAssetResourceType: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case invalid // = 0
+  case photo // = 1
+  case video // = 2
+  case audio // = 3
+  case alternatePhoto // = 4
+  case fullSizePhoto // = 5
+  case fullSizeVideo // = 6
+  case adjustmentData // = 7
+  case adjustmentBasePhoto // = 8
+  case pairedVideo // = 9
+  case fullSizePairedVideo // = 10
+  case adjustmentBasePairedVideo // = 11
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .invalid
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .photo
+    case 2: self = .video
+    case 3: self = .audio
+    case 4: self = .alternatePhoto
+    case 5: self = .fullSizePhoto
+    case 6: self = .fullSizeVideo
+    case 7: self = .adjustmentData
+    case 8: self = .adjustmentBasePhoto
+    case 9: self = .pairedVideo
+    case 10: self = .fullSizePairedVideo
+    case 11: self = .adjustmentBasePairedVideo
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .photo: return 1
+    case .video: return 2
+    case .audio: return 3
+    case .alternatePhoto: return 4
+    case .fullSizePhoto: return 5
+    case .fullSizeVideo: return 6
+    case .adjustmentData: return 7
+    case .adjustmentBasePhoto: return 8
+    case .pairedVideo: return 9
+    case .fullSizePairedVideo: return 10
+    case .adjustmentBasePairedVideo: return 11
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension FlutterPhotokit_PHAssetResourceType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [FlutterPhotokit_PHAssetResourceType] = [
+    .invalid,
+    .photo,
+    .video,
+    .audio,
+    .alternatePhoto,
+    .fullSizePhoto,
+    .fullSizeVideo,
+    .adjustmentData,
+    .adjustmentBasePhoto,
+    .pairedVideo,
+    .fullSizePairedVideo,
+    .adjustmentBasePairedVideo,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
 struct FlutterPhotokit_TriggerRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -734,6 +814,160 @@ struct FlutterPhotokit_RequestImageForAssetResponse {
   var imageData: Data = SwiftProtobuf.Internal.emptyData
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_RequestMetadataForAssetRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var assetLocalIdentifier: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_RequestMetadataForAssetResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var root: FlutterPhotokit_MetadataNode {
+    get {return _storage._root ?? FlutterPhotokit_MetadataNode()}
+    set {_uniqueStorage()._root = newValue}
+  }
+  /// Returns true if `root` has been explicitly set.
+  var hasRoot: Bool {return _storage._root != nil}
+  /// Clears the value of `root`. Subsequent reads from it will return its default value.
+  mutating func clearRoot() {_uniqueStorage()._root = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct FlutterPhotokit_AssetResourcesForAssetRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var assetLocalIdentifier: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_AssetResourcesForAssetResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var resources: [FlutterPhotokit_PHAssetResource] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_MetadataNode {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var children: Dictionary<String,FlutterPhotokit_MetadataNode> = [:]
+
+  var leafs: Dictionary<String,FlutterPhotokit_MetadataLeaf> = [:]
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FlutterPhotokit_MetadataLeaf {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var data: FlutterPhotokit_MetadataLeaf.OneOf_Data? = nil
+
+  var unknown: String {
+    get {
+      if case .unknown(let v)? = data {return v}
+      return String()
+    }
+    set {data = .unknown(newValue)}
+  }
+
+  var stringValue: String {
+    get {
+      if case .stringValue(let v)? = data {return v}
+      return String()
+    }
+    set {data = .stringValue(newValue)}
+  }
+
+  var floatValue: Float {
+    get {
+      if case .floatValue(let v)? = data {return v}
+      return 0
+    }
+    set {data = .floatValue(newValue)}
+  }
+
+  var doubleValue: Double {
+    get {
+      if case .doubleValue(let v)? = data {return v}
+      return 0
+    }
+    set {data = .doubleValue(newValue)}
+  }
+
+  var int32Value: Int32 {
+    get {
+      if case .int32Value(let v)? = data {return v}
+      return 0
+    }
+    set {data = .int32Value(newValue)}
+  }
+
+  var int64Value: Int64 {
+    get {
+      if case .int64Value(let v)? = data {return v}
+      return 0
+    }
+    set {data = .int64Value(newValue)}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum OneOf_Data: Equatable {
+    case unknown(String)
+    case stringValue(String)
+    case floatValue(Float)
+    case doubleValue(Double)
+    case int32Value(Int32)
+    case int64Value(Int64)
+
+  #if !swift(>=4.1)
+    static func ==(lhs: FlutterPhotokit_MetadataLeaf.OneOf_Data, rhs: FlutterPhotokit_MetadataLeaf.OneOf_Data) -> Bool {
+      switch (lhs, rhs) {
+      case (.unknown(let l), .unknown(let r)): return l == r
+      case (.stringValue(let l), .stringValue(let r)): return l == r
+      case (.floatValue(let l), .floatValue(let r)): return l == r
+      case (.doubleValue(let l), .doubleValue(let r)): return l == r
+      case (.int32Value(let l), .int32Value(let r)): return l == r
+      case (.int64Value(let l), .int64Value(let r)): return l == r
+      default: return false
+      }
+    }
+  #endif
+  }
 
   init() {}
 }
@@ -1105,6 +1339,24 @@ struct FlutterPhotokit_PHFetchResultPHAsset {
   init() {}
 }
 
+struct FlutterPhotokit_PHAssetResource {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var type: FlutterPhotokit_PHAssetResourceType = .invalid
+
+  var assetLocalIdentifier: String = String()
+
+  var uniformTypeIdentifier: String = String()
+
+  var originalFilename: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "flutter_photokit"
@@ -1198,6 +1450,23 @@ extension FlutterPhotokit_PHAssetPlaybackStyle: SwiftProtobuf._ProtoNameProvidin
     4: .same(proto: "PH_ASSET_PLAYBACK_STYLE_LIVE_PHOTO"),
     5: .same(proto: "PH_ASSET_PLAYBACK_STYLE_VIDEO"),
     6: .same(proto: "PH_ASSET_PLAYBACK_STYLE_VIDEO_LOOPING"),
+  ]
+}
+
+extension FlutterPhotokit_PHAssetResourceType: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PH_ASSET_RESOURCE_TYPE_INVALID"),
+    1: .same(proto: "PH_ASSET_RESOURCE_TYPE_PHOTO"),
+    2: .same(proto: "PH_ASSET_RESOURCE_TYPE_VIDEO"),
+    3: .same(proto: "PH_ASSET_RESOURCE_TYPE_AUDIO"),
+    4: .same(proto: "PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO"),
+    5: .same(proto: "PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO"),
+    6: .same(proto: "PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO"),
+    7: .same(proto: "PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA"),
+    8: .same(proto: "PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO"),
+    9: .same(proto: "PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO"),
+    10: .same(proto: "PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO"),
+    11: .same(proto: "PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO"),
   ]
 }
 
@@ -1897,6 +2166,264 @@ extension FlutterPhotokit_RequestImageForAssetResponse: SwiftProtobuf.Message, S
   }
 }
 
+extension FlutterPhotokit_RequestMetadataForAssetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".RequestMetadataForAssetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "asset_local_identifier"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.assetLocalIdentifier)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetLocalIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetLocalIdentifier, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_RequestMetadataForAssetRequest, rhs: FlutterPhotokit_RequestMetadataForAssetRequest) -> Bool {
+    if lhs.assetLocalIdentifier != rhs.assetLocalIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_RequestMetadataForAssetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".RequestMetadataForAssetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "root"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _root: FlutterPhotokit_MetadataNode? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _root = source._root
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._root)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._root {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_RequestMetadataForAssetResponse, rhs: FlutterPhotokit_RequestMetadataForAssetResponse) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._root != rhs_storage._root {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_AssetResourcesForAssetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AssetResourcesForAssetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "asset_local_identifier"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.assetLocalIdentifier)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetLocalIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetLocalIdentifier, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_AssetResourcesForAssetRequest, rhs: FlutterPhotokit_AssetResourcesForAssetRequest) -> Bool {
+    if lhs.assetLocalIdentifier != rhs.assetLocalIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_AssetResourcesForAssetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AssetResourcesForAssetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "resources"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedMessageField(value: &self.resources)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.resources.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.resources, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_AssetResourcesForAssetResponse, rhs: FlutterPhotokit_AssetResourcesForAssetResponse) -> Bool {
+    if lhs.resources != rhs.resources {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_MetadataNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".MetadataNode"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "children"),
+    2: .same(proto: "leafs"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,FlutterPhotokit_MetadataNode>.self, value: &self.children)
+      case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,FlutterPhotokit_MetadataLeaf>.self, value: &self.leafs)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.children.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,FlutterPhotokit_MetadataNode>.self, value: self.children, fieldNumber: 1)
+    }
+    if !self.leafs.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,FlutterPhotokit_MetadataLeaf>.self, value: self.leafs, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_MetadataNode, rhs: FlutterPhotokit_MetadataNode) -> Bool {
+    if lhs.children != rhs.children {return false}
+    if lhs.leafs != rhs.leafs {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_MetadataLeaf: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".MetadataLeaf"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "unknown"),
+    2: .standard(proto: "string_value"),
+    3: .standard(proto: "float_value"),
+    4: .standard(proto: "double_value"),
+    5: .standard(proto: "int32_value"),
+    6: .standard(proto: "int64_value"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: String?
+        try decoder.decodeSingularStringField(value: &v)
+        if let v = v {self.data = .unknown(v)}
+      case 2:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: String?
+        try decoder.decodeSingularStringField(value: &v)
+        if let v = v {self.data = .stringValue(v)}
+      case 3:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: Float?
+        try decoder.decodeSingularFloatField(value: &v)
+        if let v = v {self.data = .floatValue(v)}
+      case 4:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: Double?
+        try decoder.decodeSingularDoubleField(value: &v)
+        if let v = v {self.data = .doubleValue(v)}
+      case 5:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: Int32?
+        try decoder.decodeSingularInt32Field(value: &v)
+        if let v = v {self.data = .int32Value(v)}
+      case 6:
+        if self.data != nil {try decoder.handleConflictingOneOf()}
+        var v: Int64?
+        try decoder.decodeSingularInt64Field(value: &v)
+        if let v = v {self.data = .int64Value(v)}
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    switch self.data {
+    case .unknown(let v)?:
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    case .stringValue(let v)?:
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    case .floatValue(let v)?:
+      try visitor.visitSingularFloatField(value: v, fieldNumber: 3)
+    case .doubleValue(let v)?:
+      try visitor.visitSingularDoubleField(value: v, fieldNumber: 4)
+    case .int32Value(let v)?:
+      try visitor.visitSingularInt32Field(value: v, fieldNumber: 5)
+    case .int64Value(let v)?:
+      try visitor.visitSingularInt64Field(value: v, fieldNumber: 6)
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_MetadataLeaf, rhs: FlutterPhotokit_MetadataLeaf) -> Bool {
+    if lhs.data != rhs.data {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension FlutterPhotokit_PHObject: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".PHObject"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -2574,6 +3101,53 @@ extension FlutterPhotokit_PHFetchResultPHAsset: SwiftProtobuf.Message, SwiftProt
 
   static func ==(lhs: FlutterPhotokit_PHFetchResultPHAsset, rhs: FlutterPhotokit_PHFetchResultPHAsset) -> Bool {
     if lhs.results != rhs.results {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension FlutterPhotokit_PHAssetResource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".PHAssetResource"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "type"),
+    2: .same(proto: "assetLocalIdentifier"),
+    3: .same(proto: "uniformTypeIdentifier"),
+    4: .same(proto: "originalFilename"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularEnumField(value: &self.type)
+      case 2: try decoder.decodeSingularStringField(value: &self.assetLocalIdentifier)
+      case 3: try decoder.decodeSingularStringField(value: &self.uniformTypeIdentifier)
+      case 4: try decoder.decodeSingularStringField(value: &self.originalFilename)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.type != .invalid {
+      try visitor.visitSingularEnumField(value: self.type, fieldNumber: 1)
+    }
+    if !self.assetLocalIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetLocalIdentifier, fieldNumber: 2)
+    }
+    if !self.uniformTypeIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.uniformTypeIdentifier, fieldNumber: 3)
+    }
+    if !self.originalFilename.isEmpty {
+      try visitor.visitSingularStringField(value: self.originalFilename, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: FlutterPhotokit_PHAssetResource, rhs: FlutterPhotokit_PHAssetResource) -> Bool {
+    if lhs.type != rhs.type {return false}
+    if lhs.assetLocalIdentifier != rhs.assetLocalIdentifier {return false}
+    if lhs.uniformTypeIdentifier != rhs.uniformTypeIdentifier {return false}
+    if lhs.originalFilename != rhs.originalFilename {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

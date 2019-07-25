@@ -41,6 +41,16 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
             case "RequestImageForAsset":
                 response = try execGeneric(requestData: argData, funct: self.requestImageForAsset)
                 break
+            case "RequestMetadataForAsset":
+                response = try execGeneric(requestData: argData, funct: self.requestMetadataForAsset)
+                break
+            case "AssetResourcesForAsset":
+                if #available(iOS 9.0, *) {
+                    response = try execGeneric(requestData: argData, funct: self.assetResourcesForAsset)
+                } else {
+                    response = Promise.init(error: MyError.runtimeError("PHAssetResource only available on iOS 9.0 and above"))
+                }
+                break
             default:
                 result(FlutterMethodNotImplemented)
                 return
@@ -53,7 +63,7 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
             let responseData = try response.serializedData()
             result(responseData)
         }).catch { (err) in
-            result(FlutterError(code: "responseSerializeError", message: err.localizedDescription, details: nil))
+            result(FlutterError(code: "error", message: err.localizedDescription, details: nil))
         };
     }
     private func execGeneric<TRequest: Message, TResponse: Message>(
@@ -158,6 +168,158 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
                 seal.fulfill(response)
             }
         }
+    }
+    
+    private func requestMetadataForAsset(_ request:FlutterPhotokit_RequestMetadataForAssetRequest) -> Promise<FlutterPhotokit_RequestMetadataForAssetResponse> {
+        return Promise {seal in
+            let options = PHImageRequestOptions()
+            options.isNetworkAccessAllowed = true
+            let assets = PHAsset.fetchAssets(withLocalIdentifiers: [request.assetLocalIdentifier], options: nil)
+            guard assets.count == 1 else {
+                seal.reject(MyError.runtimeError("PHAsset with id \(request.assetLocalIdentifier) cannot be loaded to fetch image"))
+                return
+            }
+//            let resources = PHAssetResource.assetResources(for: assets[0])
+//            resources[0].originalFilename
+            PHImageManager.default().requestImageData(for: assets[0], options: options) { (data, dataUTI, orientation, info) in
+                let downloadFinished = !(info![PHImageCancelledKey] as? Bool ?? false) && info![PHImageErrorKey]  == nil
+                if (!downloadFinished) {
+                    print("Download unfinished \(String(describing: info))")
+                    return
+                }
+                guard let data = data else {
+                    print("data was null")
+                    print(info)
+                    seal.reject(MyError.runtimeError("null image data"))
+                    return
+                }
+                guard let img = CIImage(data: data) else {
+                    print("image is null")
+                    print(info)
+                    seal.reject(MyError.runtimeError("CIImage could not be created from data"))
+                    return
+                }
+                let datePaths:[CFString: [CFString]] = [
+                    kCGImagePropertyExifDictionary: [
+                        kCGImagePropertyExifDateTimeOriginal,
+                        kCGImagePropertyExifDateTimeDigitized,
+                        kCGImagePropertyExifSubsecTime,
+                        kCGImagePropertyExifSubsecTimeDigitized,
+                    ],
+                    kCGImagePropertyGPSDictionary: [
+                        kCGImagePropertyGPSTimeStamp,
+                    ],
+                    kCGImagePropertyIPTCDictionary: [
+                        kCGImagePropertyIPTCDateCreated,
+                        kCGImagePropertyIPTCTimeCreated,
+                        kCGImagePropertyIPTCDigitalCreationDate,
+                        kCGImagePropertyIPTCDigitalCreationTime,
+                    ],
+                    kCGImagePropertyPNGDictionary:[
+                        kCGImagePropertyPNGCreationTime,
+                        kCGImagePropertyPNGModificationTime,
+                    ],
+                    kCGImagePropertyTIFFDictionary:[
+                        kCGImagePropertyTIFFDateTime,
+                    ],
+                ]
+                print(datePaths)
+                var res = FlutterPhotokit_RequestMetadataForAssetResponse();
+                res.root = SwiftFlutterPhotokitPlugin.convertMetadata(img.properties)
+                seal.fulfill(res)
+            }
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    private func assetResourcesForAsset(_ request: FlutterPhotokit_AssetResourcesForAssetRequest) -> Promise<FlutterPhotokit_AssetResourcesForAssetResponse> {
+        return Promise {seal in
+            let assets = PHAsset.fetchAssets(withLocalIdentifiers: [request.assetLocalIdentifier], options: nil)
+            guard assets.count == 1 else {
+                seal.reject(MyError.runtimeError("PHAsset with id \(request.assetLocalIdentifier) cannot be loaded to fetch resources"))
+                return
+            }
+            let resources = PHAssetResource.assetResources(for: assets[0])
+            var response = FlutterPhotokit_AssetResourcesForAssetResponse();
+            response.resources.append(contentsOf: convert(resources))
+            seal.fulfill(response)
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    private func convert(_ input: [PHAssetResource]) -> [FlutterPhotokit_PHAssetResource] {
+        var out:[FlutterPhotokit_PHAssetResource] = []
+        for resource in input {
+            var elt = FlutterPhotokit_PHAssetResource()
+            elt.type = convert(resource.type)
+            elt.assetLocalIdentifier = resource.assetLocalIdentifier;
+            elt.uniformTypeIdentifier = resource.uniformTypeIdentifier;
+            elt.originalFilename = resource.originalFilename;
+            out.append(elt)
+        }
+        return out
+    }
+    
+    @available(iOS 9.0, *)
+    private func convert(_ input: PHAssetResourceType) -> FlutterPhotokit_PHAssetResourceType {
+        switch input {
+        case .photo:
+            return .photo
+        case .video:
+            return .video
+        case .audio:
+            return .audio
+        case .alternatePhoto:
+            return .alternatePhoto
+        case .fullSizePhoto:
+            return .fullSizePhoto
+        case .fullSizeVideo:
+            return .fullSizeVideo
+        case .adjustmentData:
+            return .adjustmentData
+        case .adjustmentBasePhoto:
+            return .adjustmentBasePhoto
+        case .pairedVideo:
+            return .pairedVideo
+        case .fullSizePairedVideo:
+            return .fullSizePairedVideo
+        case .adjustmentBasePairedVideo:
+            return .adjustmentBasePairedVideo
+        }
+    }
+    
+    private static func convertMetadata(_ input: [String: Any]) -> FlutterPhotokit_MetadataNode {
+        var output = FlutterPhotokit_MetadataNode()
+        for (key, value) in input {
+            if let value = value as? [String: Any] {
+                output.children[key] = convertMetadata(value)
+                continue
+            }
+            var leaf = FlutterPhotokit_MetadataLeaf()
+            switch value {
+            case let value as String:
+                leaf.stringValue = value
+                break
+            case let intValue as Int32 where value is Int32:
+                leaf.int32Value = intValue
+                break
+            case let intValue as Int64 where value is Int64:
+                leaf.int64Value = intValue
+                break
+            case let floatValue as Float where value is Float:
+                leaf.floatValue = floatValue
+                break
+            case let doubleValue as Double where value is Double:
+                leaf.doubleValue = doubleValue
+                break
+            default:
+                let dumped = String(describing: value)
+                print("Metadata key \(key) with type \(type(of: value))is being dumped as unknown with value:\n\(dumped)")
+                leaf.unknown = dumped
+            }
+            output.leafs[key] = leaf
+        }
+        return output
     }
     
     private func convert(_ input: PHFetchResult<PHAsset>) -> [FlutterPhotokit_PHAsset] {

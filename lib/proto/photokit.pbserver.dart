@@ -24,6 +24,8 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
   $async.Future<$2.FetchAssetsInCollectionResponse> fetchAssetsInCollection($pb.ServerContext ctx, $2.FetchAssetsInCollectionRequest request);
   $async.Future<$2.FetchAssetsResponse> fetchAssets($pb.ServerContext ctx, $2.FetchAssetsRequest request);
   $async.Future<$2.RequestImageForAssetResponse> requestImageForAsset($pb.ServerContext ctx, $2.RequestImageForAssetRequest request);
+  $async.Future<$2.RequestMetadataForAssetResponse> requestMetadataForAsset($pb.ServerContext ctx, $2.RequestMetadataForAssetRequest request);
+  $async.Future<$2.AssetResourcesForAssetResponse> assetResourcesForAsset($pb.ServerContext ctx, $2.AssetResourcesForAssetRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -35,6 +37,8 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'FetchAssetsInCollection': return $2.FetchAssetsInCollectionRequest();
       case 'FetchAssets': return $2.FetchAssetsRequest();
       case 'RequestImageForAsset': return $2.RequestImageForAssetRequest();
+      case 'RequestMetadataForAsset': return $2.RequestMetadataForAssetRequest();
+      case 'AssetResourcesForAsset': return $2.AssetResourcesForAssetRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -49,6 +53,8 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'FetchAssetsInCollection': return this.fetchAssetsInCollection(ctx, request);
       case 'FetchAssets': return this.fetchAssets(ctx, request);
       case 'RequestImageForAsset': return this.requestImageForAsset(ctx, request);
+      case 'RequestMetadataForAsset': return this.requestMetadataForAsset(ctx, request);
+      case 'AssetResourcesForAsset': return this.assetResourcesForAsset(ctx, request);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

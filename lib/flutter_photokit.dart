@@ -75,6 +75,21 @@ class FlutterPhotokit {
     final response = await api.requestImageForAsset(_ctx, request);
     return response.imageData;
   }
+
+  Future<MetadataNode> requestMetadataForAsset(final PHAsset asset) async {
+    final request = RequestMetadataForAssetRequest()
+      ..assetLocalIdentifier = asset.base.localIdentifier;
+    final response = await api.requestMetadataForAsset(_ctx, request);
+    return response.root;
+  }
+
+  Future<List<PHAssetResource>> assetResourcesForAsset(
+      final PHAsset asset) async {
+    final request = AssetResourcesForAssetRequest()
+      ..assetLocalIdentifier = asset.base.localIdentifier;
+    final response = await api.assetResourcesForAsset(_ctx, request);
+    return response.resources;
+  }
 }
 
 class MethodChannelRpcClient extends RpcClient {

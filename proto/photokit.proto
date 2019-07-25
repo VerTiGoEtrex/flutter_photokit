@@ -25,6 +25,10 @@ service PhotoKit {
 
     // PHImageManager
     rpc RequestImageForAsset(RequestImageForAssetRequest) returns (RequestImageForAssetResponse) {}
+    rpc RequestMetadataForAsset(RequestMetadataForAssetRequest) returns (RequestMetadataForAssetResponse) {}
+
+    // PHAssetResource
+    rpc AssetResourcesForAsset(AssetResourcesForAssetRequest) returns (AssetResourcesForAssetResponse) {}
 }
 
 message TriggerRequest {
@@ -89,6 +93,38 @@ message RequestImageForAssetRequest {
 
 message RequestImageForAssetResponse {
     bytes image_data = 1;
+}
+
+message RequestMetadataForAssetRequest {
+    string asset_local_identifier = 1;
+}
+
+message RequestMetadataForAssetResponse {
+    MetadataNode root = 1;
+}
+
+message AssetResourcesForAssetRequest {
+    string asset_local_identifier = 1;
+}
+
+message AssetResourcesForAssetResponse {
+    repeated PHAssetResource resources = 1;
+}
+
+message MetadataNode {
+    map<string, MetadataNode> children = 1;
+    map<string, MetadataLeaf> leafs = 2;
+}
+
+message MetadataLeaf {
+    oneof data {
+        string unknown = 1;
+        string string_value = 2;
+        float float_value = 3;
+        double double_value = 4;
+        int32 int32_value = 5;
+        int64 int64_value = 6;
+    }
 }
 
 // Photokit Types
@@ -242,4 +278,26 @@ message PHFetchOptions {
 
 message PHFetchResultPHAsset {
     repeated PHAsset results = 1;
+}
+
+message PHAssetResource {
+    PHAssetResourceType type = 1;
+    string assetLocalIdentifier = 2;
+    string uniformTypeIdentifier = 3;
+    string originalFilename = 4;
+}
+
+enum PHAssetResourceType {
+    PH_ASSET_RESOURCE_TYPE_INVALID = 0;
+    PH_ASSET_RESOURCE_TYPE_PHOTO = 1;
+    PH_ASSET_RESOURCE_TYPE_VIDEO = 2;
+    PH_ASSET_RESOURCE_TYPE_AUDIO = 3;
+    PH_ASSET_RESOURCE_TYPE_ALTERNATE_PHOTO = 4;
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PHOTO = 5;
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_VIDEO = 6;
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_DATA = 7;
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PHOTO = 8;
+    PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO = 9;
+    PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO = 10;
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO = 11;
 }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_photokit/flutter_photokit.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -288,26 +290,147 @@ class AssetPage extends StatelessWidget {
           appBar: AppBar(
             title: Text(asset.creationDate.toDateTime().toString()),
           ),
-          body: FutureBuilder<Uint8List>(
-            future: plugin.requestImage(asset),
-            builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text("${snapshot?.error}"),
-                );
-              } else if (snapshot.hasData) {
-                return Center(
-                  child: Image.memory(snapshot.data),
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
+          body: Column(
+            children: <Widget>[
+              Expanded(
+                child: FutureBuilder<MetadataNode>(
+                  future: plugin.requestMetadataForAsset(asset),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<MetadataNode> snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text("${snapshot?.error}"),
+                      );
+                    } else if (snapshot.hasData) {
+                      final dateData = extractDates(snapshot.data);
+                      return SingleChildScrollView(
+                        child: Text(
+                          dateData.toString(),
+                          softWrap: true,
+                        ),
+                      );
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+              Expanded(
+                child: FutureBuilder<List<PHAssetResource>>(
+                  future: plugin.assetResourcesForAsset(asset),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<PHAssetResource>> snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text("${snapshot?.error}"),
+                      );
+                    } else if (snapshot.hasData) {
+                      return SingleChildScrollView(
+                        child: Text(
+                          snapshot.data.toString(),
+                          softWrap: true,
+                        ),
+                      );
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+              Expanded(
+                child: FutureBuilder<Uint8List>(
+                  future: plugin.requestImage(asset),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<Uint8List> snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text("${snapshot?.error}"),
+                      );
+                    } else if (snapshot.hasData) {
+                      return Center(
+                        child: Image.memory(snapshot.data),
+                      );
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+            ],
           ),
         );
       },
     );
+  }
+
+  Map<String, DateTime> extractDates(final MetadataNode root) {
+    // TODO: [{GPS}: [TimeStamp]]
+    print(root);
+    Map<String, DateTime> dates = {};
+    final IPTCnode = root.children["{IPTC}"];
+    if (IPTCnode != null) {
+      // {IPTC}: [DateCreated, TimeCreated, DigitalCreationDate, DigitalCreationTime]
+      if ((IPTCnode.leafs["DateCreated"]?.hasStringValue() ?? false) &&
+          (IPTCnode.leafs["TimeCreated"]?.hasStringValue() ?? false)) {
+        dates["IPTC/Created"] = DateTime.parse(
+            IPTCnode.leafs["DateCreated"].stringValue +
+                " " +
+                IPTCnode.leafs["TimeCreated"].stringValue);
+      }
+      if ((IPTCnode.leafs["DigitalCreationDate"]?.hasStringValue() ?? false) &&
+          (IPTCnode.leafs["DigitalCreationTime"]?.hasStringValue() ?? false)) {
+        dates["IPTC/DigitalCreation"] = DateTime.parse(
+            IPTCnode.leafs["DigitalCreationDate"].stringValue +
+                " " +
+                IPTCnode.leafs["DigitalCreationTime"].stringValue);
+      }
+    }
+    final TIFFnode = root.children["{TIFF}"];
+    if (TIFFnode != null) {
+      // {TIFF}: [DateTime]
+      if (TIFFnode.leafs["DateTime"]?.hasStringValue() ?? false) {
+        var formatter = DateFormat("yyyy:MM:DD HH:mm:ss");
+        dates["TIFF/DateTime"] =
+            formatter.parse(TIFFnode.leafs["DateTime"].stringValue);
+      }
+    }
+    final EXIFnode = root.children["{Exif}"];
+    if (EXIFnode != null) {
+      // {Exif}: [DateTimeOriginal, DateTimeDigitized, SubsecTime, SubsecTimeDigitized]
+      final formatter = DateFormat("yyyy:MM:DD HH:mm:ss");
+      if (EXIFnode.leafs["DateTimeOriginal"]?.hasStringValue() ?? false) {
+        dates["EXIF/DateTimeOriginal"] = formatter.parse(
+            EXIFnode.leafs["DateTimeOriginal"].stringValue +
+                ((EXIFnode.leafs["SubsecTime"]?.hasStringValue() ?? false)
+                    ? ".${EXIFnode.leafs["SubsecTime"].stringValue}"
+                    : ""));
+      }
+      if (EXIFnode.leafs["DateTimeDigitized"]?.hasStringValue() ?? false) {
+        dates["EXIF/DateTimeDigitized"] = formatter.parse(EXIFnode
+                .leafs["DateTimeDigitized"].stringValue +
+            ((EXIFnode.leafs["SubsecTimeDigitized"]?.hasStringValue() ?? false)
+                ? ".${EXIFnode.leafs["SubsecTimeDigitized"].stringValue}"
+                : ""));
+      }
+    }
+    final PNGnode = root.children["{PNG}"];
+    if (PNGnode != null) {
+      // {PNG}: [Creation Time, ModificationTime]
+      if (PNGnode.leafs["CreationTime"]?.hasStringValue() ?? false) {
+        dates["PNG/CreationTime"] =
+            DateTime.parse(PNGnode.leafs["CreationTime"].stringValue);
+      }
+      if (PNGnode.leafs["ModificationTime"]?.hasStringValue() ?? false) {
+        dates["PNG/ModificationTime"] =
+            DateTime.parse(PNGnode.leafs["ModificationTime"].stringValue);
+      }
+    }
+    return dates;
   }
 }
