@@ -9,7 +9,7 @@ import 'dart:async' as $async;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'dart:core' as $core show String, Map, ArgumentError, dynamic;
+import 'dart:core' as $core;
 import 'photokit.pb.dart' as $2;
 import 'photokit.pbjson.dart';
 
@@ -19,6 +19,7 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
   $async.Future<$2.TriggerResponse> trigger($pb.ServerContext ctx, $2.TriggerRequest request);
   $async.Future<$2.GetAuthorizationStatusResponse> getAuthorizationStatus($pb.ServerContext ctx, $2.GetAuthorizationStatusRequest request);
   $async.Future<$2.RequestAuthorizationResponse> requestAuthorization($pb.ServerContext ctx, $2.RequestAuthorizationRequest request);
+  $async.Future<$2.OpenSettingsResponse> openSettings($pb.ServerContext ctx, $2.OpenSettingsRequest request);
   $async.Future<$2.FetchTopLevelUserCollectionsResponse> fetchTopLevelUserCollections($pb.ServerContext ctx, $2.FetchTopLevelUserCollectionsRequest request);
   $async.Future<$2.FetchCollectionsInCollectionListResponse> fetchCollectionsInCollectionList($pb.ServerContext ctx, $2.FetchCollectionsInCollectionListRequest request);
   $async.Future<$2.FetchAssetsInCollectionResponse> fetchAssetsInCollection($pb.ServerContext ctx, $2.FetchAssetsInCollectionRequest request);
@@ -32,6 +33,7 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'Trigger': return $2.TriggerRequest();
       case 'GetAuthorizationStatus': return $2.GetAuthorizationStatusRequest();
       case 'RequestAuthorization': return $2.RequestAuthorizationRequest();
+      case 'OpenSettings': return $2.OpenSettingsRequest();
       case 'FetchTopLevelUserCollections': return $2.FetchTopLevelUserCollectionsRequest();
       case 'FetchCollectionsInCollectionList': return $2.FetchCollectionsInCollectionListRequest();
       case 'FetchAssetsInCollection': return $2.FetchAssetsInCollectionRequest();
@@ -48,6 +50,7 @@ abstract class PhotoKitServiceBase extends $pb.GeneratedService {
       case 'Trigger': return this.trigger(ctx, request);
       case 'GetAuthorizationStatus': return this.getAuthorizationStatus(ctx, request);
       case 'RequestAuthorization': return this.requestAuthorization(ctx, request);
+      case 'OpenSettings': return this.openSettings(ctx, request);
       case 'FetchTopLevelUserCollections': return this.fetchTopLevelUserCollections(ctx, request);
       case 'FetchCollectionsInCollectionList': return this.fetchCollectionsInCollectionList(ctx, request);
       case 'FetchAssetsInCollection': return this.fetchAssetsInCollection(ctx, request);

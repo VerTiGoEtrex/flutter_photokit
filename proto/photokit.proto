@@ -14,6 +14,7 @@ service PhotoKit {
     // Auth status
     rpc GetAuthorizationStatus(GetAuthorizationStatusRequest) returns (GetAuthorizationStatusResponse) {}
     rpc RequestAuthorization(RequestAuthorizationRequest) returns (RequestAuthorizationResponse) {}
+    rpc OpenSettings(OpenSettingsRequest) returns (OpenSettingsResponse) {}
 
     // PHCollection
     rpc FetchTopLevelUserCollections(FetchTopLevelUserCollectionsRequest) returns (FetchTopLevelUserCollectionsResponse) {}
@@ -52,6 +53,9 @@ message RequestAuthorizationRequest {
 message RequestAuthorizationResponse {
     AuthorizationStatus status = 1;
 }
+
+message OpenSettingsRequest {}
+message OpenSettingsResponse {}
 
 message FetchTopLevelUserCollectionsRequest {
     PHFetchOptions fetch_options = 1;
@@ -206,6 +210,7 @@ enum PHAssetCollectionSubtype {
     PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED=22;
     PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES=23;
     PH_ASSET_COLLECTION_SUBTYPE_ANY=24;
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_UNABLE_TO_UPLOAD=25;
 }
 
 message CLLocation {
@@ -300,4 +305,5 @@ enum PHAssetResourceType {
     PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO = 9;
     PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO = 10;
     PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO = 11;
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_VIDEO = 12;
 }

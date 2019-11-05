@@ -25,6 +25,10 @@ class FlutterPhotokit {
     return response.status;
   }
 
+  Future<void> openSettings() async {
+    final response = await api.openSettings(_ctx, OpenSettingsRequest());
+  }
+
   Future<void> trigger() async {
     final response = await api.trigger(_ctx, TriggerRequest());
   }

@@ -80,6 +80,7 @@ const PHAssetCollectionSubtype$json = const {
     const {'1': 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED', '2': 22},
     const {'1': 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES', '2': 23},
     const {'1': 'PH_ASSET_COLLECTION_SUBTYPE_ANY', '2': 24},
+    const {'1': 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_UNABLE_TO_UPLOAD', '2': 25},
   ],
 };
 
@@ -122,6 +123,7 @@ const PHAssetResourceType$json = const {
     const {'1': 'PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO', '2': 9},
     const {'1': 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO', '2': 10},
     const {'1': 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO', '2': 11},
+    const {'1': 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_VIDEO', '2': 12},
   ],
 };
 
@@ -153,6 +155,14 @@ const RequestAuthorizationResponse$json = const {
   '2': const [
     const {'1': 'status', '3': 1, '4': 1, '5': 14, '6': '.flutter_photokit.AuthorizationStatus', '10': 'status'},
   ],
+};
+
+const OpenSettingsRequest$json = const {
+  '1': 'OpenSettingsRequest',
+};
+
+const OpenSettingsResponse$json = const {
+  '1': 'OpenSettingsResponse',
 };
 
 const FetchTopLevelUserCollectionsRequest$json = const {
@@ -412,6 +422,7 @@ const PhotoKitServiceBase$json = const {
     const {'1': 'Trigger', '2': '.flutter_photokit.TriggerRequest', '3': '.flutter_photokit.TriggerResponse', '4': const {}},
     const {'1': 'GetAuthorizationStatus', '2': '.flutter_photokit.GetAuthorizationStatusRequest', '3': '.flutter_photokit.GetAuthorizationStatusResponse', '4': const {}},
     const {'1': 'RequestAuthorization', '2': '.flutter_photokit.RequestAuthorizationRequest', '3': '.flutter_photokit.RequestAuthorizationResponse', '4': const {}},
+    const {'1': 'OpenSettings', '2': '.flutter_photokit.OpenSettingsRequest', '3': '.flutter_photokit.OpenSettingsResponse', '4': const {}},
     const {'1': 'FetchTopLevelUserCollections', '2': '.flutter_photokit.FetchTopLevelUserCollectionsRequest', '3': '.flutter_photokit.FetchTopLevelUserCollectionsResponse', '4': const {}},
     const {'1': 'FetchCollectionsInCollectionList', '2': '.flutter_photokit.FetchCollectionsInCollectionListRequest', '3': '.flutter_photokit.FetchCollectionsInCollectionListResponse', '4': const {}},
     const {'1': 'FetchAssetsInCollection', '2': '.flutter_photokit.FetchAssetsInCollectionRequest', '3': '.flutter_photokit.FetchAssetsInCollectionResponse', '4': const {}},
@@ -429,6 +440,8 @@ const PhotoKitServiceBase$messageJson = const {
   '.flutter_photokit.GetAuthorizationStatusResponse': GetAuthorizationStatusResponse$json,
   '.flutter_photokit.RequestAuthorizationRequest': RequestAuthorizationRequest$json,
   '.flutter_photokit.RequestAuthorizationResponse': RequestAuthorizationResponse$json,
+  '.flutter_photokit.OpenSettingsRequest': OpenSettingsRequest$json,
+  '.flutter_photokit.OpenSettingsResponse': OpenSettingsResponse$json,
   '.flutter_photokit.FetchTopLevelUserCollectionsRequest': FetchTopLevelUserCollectionsRequest$json,
   '.flutter_photokit.PHFetchOptions': PHFetchOptions$json,
   '.flutter_photokit.FetchTopLevelUserCollectionsResponse': FetchTopLevelUserCollectionsResponse$json,

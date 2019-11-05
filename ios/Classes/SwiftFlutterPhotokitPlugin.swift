@@ -51,6 +51,9 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
                     response = Promise.init(error: MyError.runtimeError("PHAssetResource only available on iOS 9.0 and above"))
                 }
                 break
+            case "OpenSettings":
+                response = try execGeneric(requestData: argData, funct: self.openSettings)
+                break
             default:
                 result(FlutterMethodNotImplemented)
                 return
@@ -246,6 +249,18 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
         }
     }
     
+    private func openSettings(_ request: FlutterPhotokit_OpenSettingsRequest) -> Promise<FlutterPhotokit_OpenSettingsResponse> {
+        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+            return Promise.init(error: MyError.runtimeError("Couldn't get settings url"))
+        }
+        
+        
+        if UIApplication.shared.canOpenURL(settingsUrl) && UIApplication.shared.openURL(settingsUrl) {
+            return Promise.value(FlutterPhotokit_OpenSettingsResponse())
+        }
+        return Promise.init(error: MyError.runtimeError("Failed to open settings URL"))
+    }
+    
     @available(iOS 9.0, *)
     private func convert(_ input: [PHAssetResource]) -> [FlutterPhotokit_PHAssetResource] {
         var out:[FlutterPhotokit_PHAssetResource] = []
@@ -285,6 +300,8 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
             return .fullSizePairedVideo
         case .adjustmentBasePairedVideo:
             return .adjustmentBasePairedVideo
+        case .adjustmentBaseVideo:
+            return .adjustmentBaseVideo
         }
     }
     
@@ -500,6 +517,8 @@ public class SwiftFlutterPhotokitPlugin: NSObject, FlutterPlugin {
             return .smartAlbumLongExposures
         case .any:
             return .any
+        case .smartAlbumUnableToUpload:
+            return .smartAlbumUnableToUpload
         }
     }
     

@@ -6,7 +6,7 @@
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 // ignore_for_file: UNDEFINED_SHOWN_NAME,UNUSED_SHOWN_NAME
-import 'dart:core' as $core show int, dynamic, String, List, Map;
+import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class AuthorizationStatus extends $pb.ProtobufEnum {
@@ -119,6 +119,7 @@ class PHAssetCollectionSubtype extends $pb.ProtobufEnum {
   static const PHAssetCollectionSubtype PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED = PHAssetCollectionSubtype._(22, 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED');
   static const PHAssetCollectionSubtype PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES = PHAssetCollectionSubtype._(23, 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES');
   static const PHAssetCollectionSubtype PH_ASSET_COLLECTION_SUBTYPE_ANY = PHAssetCollectionSubtype._(24, 'PH_ASSET_COLLECTION_SUBTYPE_ANY');
+  static const PHAssetCollectionSubtype PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_UNABLE_TO_UPLOAD = PHAssetCollectionSubtype._(25, 'PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_UNABLE_TO_UPLOAD');
 
   static const $core.List<PHAssetCollectionSubtype> values = <PHAssetCollectionSubtype> [
     PH_ASSET_COLLECTION_SUBTYPE_INVALID,
@@ -146,6 +147,7 @@ class PHAssetCollectionSubtype extends $pb.ProtobufEnum {
     PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_ANIMATED,
     PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_LONG_EXPOSURES,
     PH_ASSET_COLLECTION_SUBTYPE_ANY,
+    PH_ASSET_COLLECTION_SUBTYPE_SMART_ALBUM_UNABLE_TO_UPLOAD,
   ];
 
   static final $core.Map<$core.int, PHAssetCollectionSubtype> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -213,6 +215,7 @@ class PHAssetResourceType extends $pb.ProtobufEnum {
   static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO = PHAssetResourceType._(9, 'PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO');
   static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO = PHAssetResourceType._(10, 'PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO');
   static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO = PHAssetResourceType._(11, 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO');
+  static const PHAssetResourceType PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_VIDEO = PHAssetResourceType._(12, 'PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_VIDEO');
 
   static const $core.List<PHAssetResourceType> values = <PHAssetResourceType> [
     PH_ASSET_RESOURCE_TYPE_INVALID,
@@ -227,6 +230,7 @@ class PHAssetResourceType extends $pb.ProtobufEnum {
     PH_ASSET_RESOURCE_TYPE_PAIRED_VIDEO,
     PH_ASSET_RESOURCE_TYPE_FULL_SIZE_PAIRED_VIDEO,
     PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_PAIRED_VIDEO,
+    PH_ASSET_RESOURCE_TYPE_ADJUSTMENT_BASE_VIDEO,
   ];
 
   static final $core.Map<$core.int, PHAssetResourceType> _byValue = $pb.ProtobufEnum.initByValue(values);
